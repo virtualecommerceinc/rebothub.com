@@ -25,7 +25,7 @@ node build.js
 python -m http.server 8790 --bind 127.0.0.1 --directory docs
 ```
 
-Open http://127.0.0.1:8790/ . `node build.js --check` validates internal links and content rules (no value shown
+Open http://127.0.0.1:8790/ . Live site: https://virtualecommerceinc.github.io/rebothub.com/ (until the custom domain is set). `node build.js --check` validates internal links and content rules (no value shown
 with fewer than 3 observations, every guide has a provenance tag, risky guides have a safety block).
 
 ## Deploy
