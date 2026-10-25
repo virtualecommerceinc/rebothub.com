@@ -33,8 +33,10 @@ const PROV = {
 const amazon = q => site.amazonTag ? `https://www.amazon.com/s?k=${encodeURIComponent(q)}&tag=${encodeURIComponent(site.amazonTag)}` : `https://www.amazon.com/s?k=${encodeURIComponent(q)}`;
 const ebaySearch = q => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(q)}&LH_Sold=1&LH_Complete=1`;
 const verdictChip = v => `<span class="v v-${v}"><span aria-hidden="true">${VERDICT[v].icon}</span> ${VERDICT[v].label}</span>`;
+const BUILD_ID = require('crypto').createHash('md5').update(fs.readFileSync(path.join(ROOT, 'src/styles.css'))).update(fs.readFileSync(path.join(ROOT, 'src/app.js'))).digest('hex').slice(0, 8);
 const BASE_URL = (process.env.BASE_URL || site.domain).replace(/\/$/, '');
-const BASE = new URL(BASE_URL).pathname.replace(/\/$/, '');
+let BASE = '';
+try { BASE = new URL(BASE_URL).pathname.replace(/\/$/, ''); } catch (e) { console.error('BASE_URL must be an absolute URL such as https://rebothub.com, got: ' + BASE_URL); process.exit(1); }
 const url = p => BASE_URL + p;
 
 function write(rel, html) {
@@ -45,6 +47,59 @@ function write(rel, html) {
   pages.push(rel.endsWith('.html') || rel.includes('.') ? '/' + rel : (rel ? '/' + rel + '/' : '/'));
 }
 const pages = [];
+
+const gLabel = g => g.provenance === 'editorial' ? 'Checklist' : VERDICT[g.verdict].label;
+/* ---------- icons + header ---------- */
+const ICONS = {
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  chev: '<path d="m6 9 6 6 6-6"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  vac: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M4.5 8l2.5 1.5"/>',
+  mop: '<circle cx="12" cy="12" r="9"/><path d="M7 13c1.5 2 3 2 5 0s3.5-2 5 0"/><path d="M8.5 8.5h.01M15.5 8.5h.01"/>',
+  leg: '<path d="M3 11h12l2-3h3v4l-2 1v6M6 12v7M11 12v7M15 12v3"/>',
+  shield: '<path d="M12 3 4 6v6c0 4.5 3.2 7.7 8 9 4.8-1.3 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/>',
+  chart: '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.7-.7-2.5z"/>',
+  doc: '<path d="M6 3h9l4 4v14H6z"/><path d="M9 13h6M9 17h6"/>',
+  eye: '<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  check: '<path d="m5 12 5 5 9-10"/>',
+  q: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/>'
+};
+const icon = (n, cls) => `<svg class="i${cls ? ' ' + cls : ''}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ''}</svg>`;
+const modelIcon = m => /quadruped/i.test(m.category) ? 'leg' : (/mop|dock/i.test(m.category) ? 'mop' : 'vac');
+
+function searchBox(id, big, label) {
+  const ph = big ? 'Try &quot;Roomba error 14&quot;' : 'Search robots and errors';
+  return `<div class="searchbox${big ? ' big' : ''}"><form role="search" aria-label="${esc(label)}" action="/robots/" method="get"><label for="q-${id}">${esc(label)}: robots, error codes and guides</label><div class="field">${icon('search')}<input id="q-${id}" type="search" name="q" placeholder="${ph}" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="res-${id}" aria-autocomplete="list"><button class="go" type="submit">Search</button></div></form><ul class="results" id="res-${id}" role="listbox" aria-label="Search results" hidden></ul><span class="sr" aria-live="polite"></span></div>`;
+}
+function columns(groups, n) {
+  const cols = Array.from({ length: n }, () => ({ h: 0, g: [] }));
+  groups.forEach(g => { const c = cols.reduce((a, b) => (b.h < a.h ? b : a)); c.g.push(g); c.h += g.items.length + 1; });
+  return cols.map(c => `<div>${c.g.map(g => `<p class="mt">${esc(g.title)}</p>${g.items.join('')}`).join('')}</div>`).join('');
+}
+function siteHeader() {
+  const brands = [...new Set(models.map(m => m.brand))];
+  const robotGroups = brands.map(b => ({ title: b, items: models.filter(m => m.brand === b).map(m => `<a class="mega-link" href="/robots/${m.slug}/"><b>${esc(m.name)}</b><span>${esc(m.category)} · since ${esc(m.launched)}</span></a>`) }));
+  robotGroups.push({ title: 'Everything', items: [`<a class="mega-link" href="/robots/"><b>All robot hubs</b><span>Verdict tables, value, buy and sell checklists</span></a>`, `<a class="mega-link" href="/humanoid/"><b>Humanoid track</b><span>Used-humanoid questions, answered early</span></a>`] });
+  const guideGroups = brands.map(b => ({ title: b, items: guides.filter(g => g.model && modelBySlug[g.model].brand === b).map(g => `<a class="mega-link" href="/fix/${g.slug}/"><b>${esc(g.title.split(':')[0])}</b><span>${esc(gLabel(g))} · ${esc(g.symptom.length > 60 ? g.symptom.slice(0, 57) + '…' : g.symptom)}</span></a>`) })).filter(g => g.items.length);
+  guideGroups.push({ title: 'Any robot', items: guides.filter(g => !g.model).map(g => `<a class="mega-link" href="/fix/${g.slug}/"><b>${esc(g.title.split(':')[0])}</b><span>Checklist · any robot</span></a>`) });
+  const item = (id, label, groups, feat) => `<div class="nav-item" data-mega><button class="nav-link" type="button" aria-expanded="false" aria-controls="mm-${id}">${label}${icon('chev', 'chev')}</button><div class="mega" id="mm-${id}" hidden>${columns(groups, 3)}<div class="mega-feature"><b>${feat.title}</b><p>${feat.text}</p><a class="button small" href="${feat.href}">${feat.cta}</a></div></div></div>`;
+  return `<div class="bg" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap"><span><i class="dot" aria-hidden="true"></i>Fix it. Value it. Rehome it.</span><nav aria-label="Policies"><a href="/value/#methodology">How values work</a><a href="/disclosure/">Affiliate disclosure</a><a href="/about/">About</a></nav></div></div>
+<header class="header" id="top">
+<div class="wrap bar"><a class="brand" href="/" aria-label="${esc(site.name)} home"><b aria-hidden="true">↻</b>rebot<span>hub</span></a>
+${searchBox('hdr', false, 'Site search')}
+<div class="bar-actions"><button class="button small search-toggle" type="button" aria-label="Search" aria-controls="navigation">${icon('search')}</button><a class="button primary small alerts" href="/alerts/">Get alerts</a><button class="button small nav-toggle" type="button" aria-controls="navigation" aria-expanded="false">Menu</button></div></div>
+<nav class="cats" id="navigation" aria-label="Main"><div class="wrap cats-inner">
+<div class="drawer-search">${searchBox('drw', false, 'Menu search')}</div>
+${item('robots', 'Robots', robotGroups, { title: 'Not sure what you own?', text: 'Start from the robot, then read what is wrong with it.', href: '/robots/', cta: 'Browse all robots' })}
+${item('fix', 'Fix guides', guideGroups, { title: 'Fix, sell, or replace?', text: 'Every guide ends with a straight verdict and names its source.', href: '/guides/', cta: 'See all guides' })}
+<a class="nav-link" href="/value/">Value index</a><a class="nav-link" href="/humanoid/">Humanoids</a><a class="nav-link" href="/flips/">Flips</a><a class="nav-link" href="/market/">Market</a>
+<span class="cats-spacer"></span><a class="promo" href="/value/#methodology">${icon('shield')} Values appear only after 3 dated sales</a>
+</div></nav>
+</header>`;
+}
 
 /* ---------- layout ---------- */
 function layout({ title, description, pathName, body, schema, crumbs, noindex }) {
@@ -70,31 +125,27 @@ ${noindex ? '<meta name="robots" content="noindex,follow">' : ''}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/atom+xml" title="${esc(site.name)} guides" href="/feed.xml">
-<link rel="stylesheet" href="/styles.css">
+<meta name="theme-color" content="#f5f3ec">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="/styles.css?v=${BUILD_ID}">
 ${schemas.map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="header"><nav class="wrap nav" aria-label="Main">
-<a class="brand" href="/" aria-label="${esc(site.name)} home"><b aria-hidden="true">↻</b>rebot<span>hub</span></a>
-<button class="button small nav-toggle" aria-controls="navigation" aria-expanded="false">Menu</button>
-<div class="nav-links" id="navigation">
-<a href="/robots/">Robots</a><a href="/guides/">Fix guides</a><a href="/value/">Value index</a><a href="/humanoid/">Humanoids</a><a href="/flips/">Flips</a><a href="/market/">Market</a><a class="button small" href="/alerts/">Get alerts</a>
-</div></nav></header>
+${siteHeader()}
 ${crumbHtml}
 <main id="main">
 ${body}
 </main>
 <footer><div class="wrap">
 <div class="footer-grid">
-<div><a class="brand" href="/"><b aria-hidden="true">↻</b>rebot<span>hub</span></a><p style="margin-top:12px">${esc(site.tagline)} Guides say who checked them and when. Values say how many sales they rest on. Nothing here replaces the manual for your exact model.</p></div>
-<div><h4>Learn</h4><a href="/robots/">Model hubs</a><a href="/guides/">Fix guides</a><a href="/value/">Rebot Value Index</a><a href="/roomba-after-irobot/">Roomba after iRobot</a><a href="/humanoid/">Humanoid track</a></div>
-<div><h4>Do</h4><a href="/market/">Sell or find a robot</a><a href="/report/">Report a sale or a fix</a><a href="/flips/">Rebot Flips</a><a href="/alerts/">Owner alerts</a></div>
-<div><h4>Trust</h4><a href="/about/">About Dan</a><a href="/value/#methodology">Methodology</a><a href="/disclosure/">Affiliate disclosure</a><a href="/privacy/">Privacy</a></div>
+<div><a class="brand" href="/"><b aria-hidden="true">↻</b>rebot<span>hub</span></a><p style="margin-top:12px">${esc(site.tagline)} Every guide shows its sources and review status. Values show how many sales they rest on. Nothing here replaces the manual for your exact model.</p></div>
+<div><p class="ft">Learn</p><a href="/robots/">Model hubs</a><a href="/guides/">Fix guides</a><a href="/value/">Rebot Value Index</a><a href="/roomba-after-irobot/">Roomba after iRobot</a><a href="/humanoid/">Humanoid track</a></div>
+<div><p class="ft">Do</p><a href="/market/">Sell or find a robot</a><a href="/report/">Report a sale or a fix</a><a href="/flips/">Rebot Flips</a><a href="/alerts/">Owner alerts</a></div>
+<div><p class="ft">Trust</p><a href="/about/">About Dan</a><a href="/value/#methodology">Methodology</a><a href="/disclosure/">Affiliate disclosure</a><a href="/privacy/">Privacy</a></div>
 </div>
 <div class="fineprint"><span>© ${TODAY.slice(0, 4)} ${esc(site.name)}. Rethink. Reuse. Rebot.</span><span>Repairs involve batteries and tools; you accept the risk of work you do yourself. See each guide's safety block.</span></div>
 </div></footer>
-<script src="/app.js" defer></script>
+<script src="/app.js?v=${BUILD_ID}" defer data-search="${BASE}/search.json"></script>
 </body>
 </html>`;
 }
@@ -149,26 +200,38 @@ ${isListing ? `<label for="f-price">Asking price (USD)</label><input id="f-price
 
 /* ---------- pages ---------- */
 function home() {
-  const brands = [...new Set(models.map(m => m.brand))];
+  const accent = m => m.track === 'humanoid' ? 'a' : (m.brandSlug === 'irobot' ? '' : 'g');
   const featured = guides.filter(g => g.model).slice(0, 6);
   const body = `
 <section class="wrap hero">
 <div><span class="eyebrow">A little more life in every robot</span>
 <h1>Everyday robots.<br><em class="accent">Longer lives.</em></h1>
 <p class="lead">${esc(site.subtitle)}</p>
-<div class="actions"><a class="button primary" href="/robots/">Find your robot →</a><a class="button" href="/guides/">Browse fix guides</a></div>
-<small>Fix it. Value it. Rehome it. Every page says who checked it and when.</small></div>
-<figure class="hero-art"><img src="/hero.svg" alt="Illustration of a floor-cleaning robot, a wheeled garden robot and a humanoid study" width="900" height="700" fetchpriority="high"><figcaption>Field study 001 / Original illustration</figcaption></figure>
+${searchBox('hero', true, 'Find your robot or error code')}
+<div class="chips"><span>Try:</span><a rel="nofollow" href="/robots/?q=roomba%20error%2014" data-fill="Roomba error 14">Roomba error 14</a><a rel="nofollow" href="/robots/?q=roborock%20error%201" data-fill="Roborock error 1">Roborock error 1</a><a rel="nofollow" href="/robots/?q=battery" data-fill="battery">Battery won't charge</a><a rel="nofollow" href="/robots/?q=unitree" data-fill="Unitree Go2">Unitree Go2</a></div>
+<p class="small" style="margin-top:16px;color:var(--muted)">Fix it. Value it. Rehome it. Every guide shows its sources and review status.</p></div>
+<figure class="hero-art"><img src="/hero.svg" alt="Illustration of a floor-cleaning robot, a wheeled garden robot and a humanoid study" width="900" height="700" fetchpriority="high">
+<div class="float-chip c1" aria-hidden="true"><span class="ok">${icon('check')}</span><span><b>Example: Error 14</b>Usually a dirty contact. Fix</span></div>
+<div class="float-chip c2" aria-hidden="true"><span class="q">${icon('chart')}</span><span><b>Used value</b>Collecting, sample size shown</span></div>
+<div class="float-chip c3" aria-hidden="true"><span class="ok">${icon('wrench')}</span><span><b>Example: battery swap</b>About 20 min, easy</span></div>
+<figcaption>Field study 001 / Original illustration</figcaption></figure>
 </section>
 
-<section class="wrap section" id="pick">
+<section class="wrap trustbar" aria-label="How we earn trust">
+<div>${icon('shield')}<span><b>Sources named</b>Every guide says where its steps come from</span></div>
+<div>${icon('chart')}<span><b>Sample size shown</b>A value needs three dated observations</span></div>
+<div>${icon('eye')}<span><b>Review status shown</b>Each guide says whether a person has checked it</span></div>
+<div>${icon('doc')}<span><b>No printed prices</b>Buttons open the live listing</span></div>
+</section>
+
+<div class="band"><section class="wrap section" id="pick">
 <span class="eyebrow">Start with the robot you have</span>
 <h2>What's wrong with it decides<br>whether to <em class="accent">fix, sell, or replace.</em></h2>
 <div class="tiles">
-${models.map(m => `<a class="tile" href="/robots/${m.slug}/"><b>${esc(m.name)}</b><span>${esc(m.category)}</span></a>`).join('')}
-<a class="tile" href="/robots/"><b>All robots →</b><span>${models.length} hubs and growing</span></a>
+${models.map(m => `<a class="tile" href="/robots/${m.slug}/"><span class="ico ${accent(m)}">${icon(modelIcon(m))}</span><b>${esc(m.name)}</b><span class="s">${esc(m.category)}</span></a>`).join('')}
+<a class="tile" href="/robots/"><span class="ico a">${icon('arrow')}</span><b>All robots</b><span class="s">${models.length} hubs and growing</span></a>
 </div>
-</section>
+</section></div>
 
 <section class="wrap section">
 <span class="eyebrow">How RebotHub works</span>
@@ -187,15 +250,15 @@ ${featured.map((g, i) => `<a class="card num ${['sage', 'sand', 'sky'][i % 3]}" 
 </section>
 
 <section class="wrap section">
-<div class="feature"><div><span class="eyebrow">The next chapter / Humanoids</span><h2>Curiosity, with<br><em class="accent">both feet on earth.</em></h2><p>The first used humanoids will change hands within a few years. Licence tiers, firmware, actuator wear and battery packs will decide their value, and the Unitree Go2 market is rehearsing it today. We are writing down what matters before the first listing appears.</p><a class="button light" href="/humanoid/">Follow the humanoid track →</a></div><div class="orbit" aria-hidden="true">↻</div></div>
+<div class="feature"><div><span class="eyebrow">The next chapter / Humanoids</span><h2>Curiosity, with<br><em class="accent">both feet on earth.</em></h2><p>The first used humanoids will change hands within a few years. Licence tiers, firmware, actuator wear and battery packs will decide their value, and the Unitree Go2 market is rehearsing it today. We are writing down what matters before the first listing appears.</p><a class="button light" href="/humanoid/">Follow the humanoid track ${icon('arrow')}</a></div><div class="orbit" aria-hidden="true">↻</div></div>
 </section>
 
-<section class="wrap section split">
+<div class="band sky"><section class="wrap section split">
 <div><span class="eyebrow">Live topic</span><h2>Roomba after iRobot</h2><p>iRobot filed for Chapter 11 in December 2025 and emerged in January 2026 owned by its contract manufacturer, Picea. The company said the app and support continue. What that means for your Roomba's value, and what to check before buying a used one. <a href="/roomba-after-irobot/">Read the briefing →</a></p></div>
 <div><span class="eyebrow">Owner alerts</span><h2>One email when it matters.</h2><p>A value changes, a flip publishes, a firmware or support notice lands for a robot you own. Weekly at most.</p>${form('alerts')}</div>
-</section>
+</section></div>
 
-<section class="wrap section"><div class="bridge"><div><span class="eyebrow">Sell or find a robot</span><h2>Rehome it well.</h2><p>Selling checklists, a listing template that works on eBay today, and a review-first listings page here.</p></div><a class="button primary" href="/market/">Go to the market →</a></div></section>`;
+<section class="wrap section"><div class="bridge"><div><span class="eyebrow">Sell or find a robot</span><h2>Rehome it well.</h2><p>Selling checklists, a listing template that works on eBay today, and a review-first listings page here.</p></div><a class="button primary" href="/market/">Go to the market ${icon('arrow')}</a></div></section>`;
   const schema = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.domain, description: site.subtitle }, { '@context': 'https://schema.org', '@type': 'Organization', name: site.name, url: site.domain, founder: { '@type': 'Person', name: site.owner } }];
   write('', layout({ title: `${site.name} — ${site.tagline}`, description: site.subtitle, pathName: '/', body, schema }));
 }
@@ -203,8 +266,9 @@ ${featured.map((g, i) => `<a class="card num ${['sage', 'sand', 'sky'][i % 3]}" 
 function robotsIndex() {
   const body = `<section class="wrap page-head"><span class="eyebrow">Model hubs</span><h1>Every robot we cover</h1><p class="lead">Each hub has a symptom-to-verdict table, the Rebot Value Index entry, a buy-used inspection list and a sell-it-right list. Missing yours? <a href="/report/">Tell us which robot</a>.</p>
 <div class="search"><div><label for="q">Filter by brand or model</label><input id="q" type="search" data-filter-input placeholder="Roborock, Roomba, Go2…"></div><span class="small" data-filter-count></span></div></section>
+<noscript><p class="wrap pending">Search and filters need JavaScript. The full list is below.</p></noscript>
 <section class="wrap"><div class="cards" data-filter-list>
-${models.map(m => `<a class="card" href="/robots/${m.slug}/" data-search="${esc(m.brand + ' ' + m.name + ' ' + m.category)}"><span class="meta">${esc(m.brand)} · ${esc(m.category)}</span><h3>${esc(m.name)}</h3><p>${esc(m.summary)}</p><span class="small">${m.symptoms.length} symptoms · ${m.value.observations} value observations</span></a>`).join('')}
+${models.map(m => `<a class="card" href="/robots/${m.slug}/" data-search="${esc(m.brand + ' ' + m.name + ' ' + m.category + ' ' + m.symptoms.map(x => x.symptom + ' ' + x.cause).join(' '))}"><span class="meta">${esc(m.brand)} · ${esc(m.category)}</span><h3>${esc(m.name)}</h3><p>${esc(m.summary)}</p><span class="small">${m.symptoms.length} symptoms · ${m.value.observations} value observations</span></a>`).join('')}
 </div><p class="pending" data-filter-empty hidden>No match. <a href="/report/">Ask us to add it</a>.</p></section>`;
   write('robots', layout({ title: `All robots — ${site.name}`, description: 'Model hubs for every robot RebotHub covers: verdict tables, value, buying and selling checklists.', pathName: '/robots/', body, crumbs: [{ label: 'Home', href: '/' }, { label: 'Robots' }] }));
 }
@@ -222,7 +286,7 @@ function modelPage(m) {
 <section class="wrap section" id="value"><h2>What it is worth used</h2>${valueBlock(m)}</section>
 <section class="wrap section split" id="buy"><div><span class="eyebrow">Buying used</span><h2>Inspect it in ten minutes</h2><ul class="checks">${m.buyChecks.map(c => `<li>${esc(c)}</li>`).join('')}</ul><p><a href="/fix/evergreen/buying-a-used-robot-inspection/">The general inspection guide</a> · <a href="/fix/evergreen/handover-and-account-transfer/">The clean handover</a></p></div>
 <div id="sell"><span class="eyebrow">Selling</span><h2>Get the most for it</h2><ul class="checks">${m.sellChecks.map(c => `<li>${esc(c)}</li>`).join('')}</ul><p><a class="button" href="/market/#template">Listing template →</a></p></div></section>
-<section class="wrap section" id="guides"><h2>Guides for this robot</h2>${related.length ? `<div class="cards">${related.map(g => `<a class="card" href="/fix/${g.slug}/"><span class="meta">${esc(PROV[g.provenance].label.split(':')[0])} · ${VERDICT[g.verdict].label}</span><h3>${esc(g.title)}</h3><p>${esc(g.symptom)}</p></a>`).join('')}</div>` : `<p class="pending">No step-by-step guide yet. The verdict table above still applies. <a href="/report/">Tell us what broke</a> and it moves up the list.</p>`}</section>
+<section class="wrap section" id="guides"><h2>Guides for this robot</h2>${related.length ? `<div class="cards">${related.map(g => `<a class="card" href="/fix/${g.slug}/"><span class="meta">${esc(PROV[g.provenance].label.split(':')[0])} · ${gLabel(g)}</span><h3>${esc(g.title)}</h3><p>${esc(g.symptom)}</p></a>`).join('')}</div>` : `<p class="pending">No step-by-step guide yet. The verdict table above still applies. <a href="/report/">Tell us what broke</a> and it moves up the list.</p>`}</section>
 <section class="wrap section" id="reports"><h2>Owner reports</h2><p class="pending">None published yet. Reports appear here with first name and date once we have checked them. <a href="/report/">Report a sale or a fix</a>.</p></section>`;
   const schema = [{ '@context': 'https://schema.org', '@type': 'Article', headline: `${m.name}: fix, sell, or replace?`, author: { '@type': 'Person', name: site.owner }, publisher: { '@type': 'Organization', name: site.name }, dateModified: TODAY, mainEntityOfPage: url(`/robots/${m.slug}/`) }, { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }];
   write(`robots/${m.slug}`, layout({ title: `${m.name}: fix, sell, or replace? Used value and common faults — ${site.name}`, description: `${m.name} symptom-to-verdict table, used value with sample size, and buying and selling checklists.`, pathName: `/robots/${m.slug}/`, body, schema, crumbs: [{ label: 'Home', href: '/' }, { label: 'Robots', href: '/robots/' }, { label: m.name }] }));
@@ -231,8 +295,9 @@ function modelPage(m) {
 function guidesIndex() {
   const body = `<section class="wrap page-head"><span class="eyebrow">Fix guides</span><h1>Start with the symptom</h1><p class="lead">Each guide names its source, its risk class and who reviewed it. "Documented" means the steps follow the manufacturer's published procedure; "Hands-on" means we did it on camera.</p>
 <div class="search"><div><label for="q">Filter by robot, error code or symptom</label><input id="q" type="search" data-filter-input placeholder="error 14, battery, lidar…"></div><span class="small" data-filter-count></span></div></section>
+<noscript><p class="wrap pending">Search and filters need JavaScript. The full list is below.</p></noscript>
 <section class="wrap"><div class="cards" data-filter-list>
-${guides.map(g => `<a class="card" href="/fix/${g.slug}/" data-search="${esc(g.title + ' ' + g.symptom + ' ' + (g.model ? modelBySlug[g.model].brand + ' ' + modelBySlug[g.model].name : 'general'))}"><span class="meta">${g.model ? esc(modelBySlug[g.model].brand) : 'Any robot'} · ${VERDICT[g.verdict].label}</span><h3>${esc(g.title)}</h3><p>${esc(g.symptom)}</p></a>`).join('')}
+${guides.map(g => `<a class="card" href="/fix/${g.slug}/" data-search="${esc(g.title + ' ' + g.symptom + ' ' + (g.model ? modelBySlug[g.model].brand + ' ' + modelBySlug[g.model].name : 'general'))}"><span class="meta">${g.model ? esc(modelBySlug[g.model].brand) : 'Any robot'} · ${gLabel(g)}</span><h3>${esc(g.title)}</h3><p>${esc(g.symptom)}</p></a>`).join('')}
 </div><p class="pending" data-filter-empty hidden>No match yet. <a href="/report/">Tell us what broke</a>.</p></section>`;
   write('guides', layout({ title: `Fix guides — ${site.name}`, description: 'Symptom-led repair guides for robot vacuums and legged robots, each with a fix, sell, or replace verdict and a named source.', pathName: '/guides/', body, crumbs: [{ label: 'Home', href: '/' }, { label: 'Fix guides' }] }));
 }
@@ -247,7 +312,7 @@ function guidePage(g) {
   const body = `<section class="wrap page-head"><span class="eyebrow">${m ? esc(m.brand) + ' · ' : ''}Fix guide</span><h1>${esc(g.title)}</h1><p class="lead">${esc(g.symptom)}.</p>
 <div class="badges"><span class="badge ${prov.cls}">${esc(prov.label)}</span><span class="badge">Risk: ${esc(g.riskClass === 'none' ? 'low' : g.riskClass)}</span>${g.tools && g.tools.length ? `<span class="badge">Tools: ${esc(g.tools.join(', '))}</span>` : ''}</div>
 <p class="small">${esc(g.provenanceNote)}</p>${reviewed(g)}</section>
-<section class="wrap section"><div class="verdict-box v-${g.verdict}"><strong>${VERDICT[g.verdict].icon} Verdict: ${VERDICT[g.verdict].label}</strong>${esc(g.verdictText)}</div>${safety}
+<section class="wrap section"><div class="verdict-box v-${g.verdict}"><strong>${g.provenance === 'editorial' ? '✓ Bottom line' : VERDICT[g.verdict].icon + ' Verdict: ' + VERDICT[g.verdict].label}</strong>${esc(g.verdictText)}</div>${safety}
 <h2>Steps</h2><ol class="steps">${g.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
 ${parts}
 ${g.faq && g.faq.length ? `<h2 style="margin-top:32px">Questions</h2>${g.faq.map(f => `<details class="q"><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}` : ''}
@@ -259,7 +324,7 @@ ${m ? `<p><a class="button" href="/robots/${m.slug}/">Back to the ${esc(m.name)}
   const crumbs = [{ label: 'Home', href: '/' }, { label: 'Fix guides', href: '/guides/' }];
   if (m) crumbs.push({ label: m.name, href: `/robots/${m.slug}/` });
   crumbs.push({ label: g.title });
-  write(`fix/${g.slug}`, layout({ title: `${g.title} — ${site.name}`, description: `${g.symptom}. Verdict: ${VERDICT[g.verdict].label}. ${g.provenanceNote}`.slice(0, 158), pathName: `/fix/${g.slug}/`, body, schema, crumbs }));
+  write(`fix/${g.slug}`, layout({ title: `${g.title} — ${site.name}`, description: `${g.symptom}. ${g.provenance === 'editorial' ? 'Checklist' : 'Verdict: ' + VERDICT[g.verdict].label}. ${g.provenanceNote}`.slice(0, 158), pathName: `/fix/${g.slug}/`, body, schema, crumbs }));
 }
 
 function valuePage() {
@@ -378,6 +443,14 @@ function extras() {
   fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom">\n<title>${esc(site.name)} guides</title><link href="${url('/feed.xml')}" rel="self"/><link href="${site.domain}"/><updated>${TODAY}T00:00:00Z</updated><id>${site.domain}/</id>\n${guides.map(g => `<entry><title>${esc(g.title)}</title><link href="${url('/fix/' + g.slug + '/')}"/><id>${url('/fix/' + g.slug + '/')}</id><updated>${TODAY}T00:00:00Z</updated><summary>${esc(g.symptom)}</summary></entry>`).join('\n')}\n</feed>\n`);
   fs.writeFileSync(path.join(OUT, 'llms.txt'), `# ${site.name}\n\n> ${site.tagline} ${site.subtitle}\n\nRebotHub publishes symptom-led repair guides with a Fix / Sell / Replace verdict, a used-price index (Rebot Value Index) that shows sample size and date on every figure, and buying, selling and handover checklists for consumer and legged robots. Guides carry a provenance badge (hands-on, documented, owner-reported, editorial). Values with fewer than three observations are shown as "collecting".\n\n## Model hubs\n${models.map(m => `- [${m.name}](${url('/robots/' + m.slug + '/')}): ${m.summary}`).join('\n')}\n\n## Fix guides\n${guides.map(g => `- [${g.title}](${url('/fix/' + g.slug + '/')}): ${g.symptom}`).join('\n')}\n\n## Reference\n- [Rebot Value Index and methodology](${url('/value/')})\n- [Humanoid track](${url('/humanoid/')})\n- [Roomba after iRobot](${url('/roomba-after-irobot/')})\n- [Rebot Flips ledger](${url('/flips/')})\n- [About and editorial policy](${url('/about/')})\n`);
   for (const f of ['styles.css', 'app.js', 'hero.svg', 'favicon.svg']) fs.copyFileSync(path.join(ROOT, 'src', f), path.join(OUT, f));
+  const sidx = [];
+  const lc = t => String(t).toLowerCase();
+  models.forEach(m => sidx.push({ t: m.name, s: `${m.brand} · ${m.category}`, k: 'Robot', u: `${BASE}/robots/${m.slug}/`, x: lc([m.name, m.brand, m.category, m.summary, m.symptoms.map(x => x.symptom + ' ' + x.cause).join(' ')].join(' ')) }));
+  const POP = ['irobot-roomba-j7/error-14-bin-not-detected', 'roborock-s7/error-1-lidar-blocked', 'irobot-roomba-j7/battery-wont-hold-charge', 'evergreen/handover-and-account-transfer'];
+  guides.forEach(g => sidx.push({ p: POP.includes(g.slug) ? 1 : undefined, t: g.title.split(':')[0], s: g.symptom, k: 'Guide', u: `${BASE}/fix/${g.slug}/`, x: lc([g.title, g.symptom, g.model ? modelBySlug[g.model].name + ' ' + modelBySlug[g.model].brand : 'any robot general', 'error fix repair'].join(' ')) }));
+  [['Rebot Value Index', 'What used robots sell for, with sample sizes', '/value/'], ['Humanoid track', 'What used humanoids will be worth', '/humanoid/'], ['Roomba after iRobot', 'Chapter 11, Picea and what it means for your Roomba', '/roomba-after-irobot/'], ['Rebot Flips', 'Bought broken, fixed on camera, sold', '/flips/'], ['Market', 'Sell or find a used robot', '/market/'], ['Report a sale or a fix', 'Add a price or a repair outcome', '/report/'], ['Owner alerts', 'One email when it matters', '/alerts/'], ['About', 'Who checks this site', '/about/']]
+    .forEach(([t, s2, u]) => sidx.push({ t, s: s2, k: 'Page', u: `${BASE}${u}`, x: lc(t + ' ' + s2) }));
+  fs.writeFileSync(path.join(OUT, 'search.json'), JSON.stringify(sidx));
   fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
   /* OG image: simple SVG served as fallback until a PNG generator is added */
   fs.writeFileSync(path.join(OUT, 'og.svg'), `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><rect width="1200" height="630" fill="#f5f3ec"/><circle cx="110" cy="110" r="44" fill="#244cdb"/><text x="110" y="128" text-anchor="middle" font-family="Georgia" font-size="56" fill="#fff">↻</text><text x="80" y="330" font-family="Arial" font-size="88" fill="#172421" letter-spacing="-4">Everyday robots.</text><text x="80" y="430" font-family="Georgia" font-style="italic" font-size="88" fill="#244cdb">Longer lives.</text><text x="80" y="540" font-family="Arial" font-size="30" fill="#4d5d56">rebothub.com · fix it, value it, rehome it</text></svg>`);
@@ -402,6 +475,9 @@ function check() {
     if (!/<link rel="canonical"/.test(html)) problems.push(`${rel}: missing canonical`);
     if (/\$\s?\d/.test(html.replace(/<script[\s\S]*?<\/script>/g, ''))) problems.push(`${rel}: a dollar price appears in page text`);
   }
+  const home = fs.readFileSync(path.join(OUT, 'index.html'), 'utf8');
+  for (const needle of ['class="header"', 'nav-toggle', 'search-toggle', 'data-mega', 'class="searchbox', 'class="results"', 'data-fill=', 'class="sr"', 'id="q-hdr"', 'id="q-drw"', 'id="q-hero"']) if (!home.includes(needle)) problems.push('markup contract: app.js expects ' + needle + ' in index.html');
+  if ((home.match(/<h4/g) || []).length) problems.push('mega or footer titles must not be h4 (heading order)');
   for (const m of models) { if (m.value.observations < 3 && m.value.band) problems.push(`${m.slug}: band set with <3 observations`); if (!m.symptoms.length) problems.push(`${m.slug}: no symptoms`); for (const s of m.symptoms) if (s.guide && !guideBySlug[s.guide]) problems.push(`${m.slug}: unknown guide ${s.guide}`); }
   for (const g of guides) { if (!PROV[g.provenance]) problems.push(`${g.slug}: bad provenance`); if (['battery', 'blade', 'mains', 'water'].includes(g.riskClass) && !g.safety) problems.push(`${g.slug}: risky guide without safety text`); if (g.model && !modelBySlug[g.model]) problems.push(`${g.slug}: unknown model`); }
   if (problems.length) { console.error('CHECK FAILED\n' + problems.join('\n')); process.exit(1); }
@@ -409,8 +485,8 @@ function check() {
 }
 
 /* ---------- run ---------- */
-fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
+for (const e of fs.readdirSync(OUT)) fs.rmSync(path.join(OUT, e), { recursive: true, force: true });
 home(); robotsIndex(); models.forEach(modelPage); guidesIndex(); guides.forEach(guidePage);
 valuePage(); humanoidPage(); roombaPage(); flipsPage(); marketPage(); reportPage(); alertsPage(); aboutPage(); disclosurePage(); privacyPage(); notFound();
 extras();
