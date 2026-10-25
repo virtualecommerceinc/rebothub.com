@@ -33,11 +33,14 @@ const PROV = {
 const amazon = q => site.amazonTag ? `https://www.amazon.com/s?k=${encodeURIComponent(q)}&tag=${encodeURIComponent(site.amazonTag)}` : `https://www.amazon.com/s?k=${encodeURIComponent(q)}`;
 const ebaySearch = q => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(q)}&LH_Sold=1&LH_Complete=1`;
 const verdictChip = v => `<span class="v v-${v}"><span aria-hidden="true">${VERDICT[v].icon}</span> ${VERDICT[v].label}</span>`;
-const url = p => site.domain.replace(/\/$/, '') + p;
+const BASE_URL = (process.env.BASE_URL || site.domain).replace(/\/$/, '');
+const BASE = new URL(BASE_URL).pathname.replace(/\/$/, '');
+const url = p => BASE_URL + p;
 
 function write(rel, html) {
   const file = rel.endsWith('.html') || rel.includes('.') ? path.join(OUT, rel) : path.join(OUT, rel, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
+  if (BASE) html = html.replace(/(href|src|action)="\//g, `$1="${BASE}/`);
   fs.writeFileSync(file, html);
   pages.push(rel.endsWith('.html') || rel.includes('.') ? '/' + rel : (rel ? '/' + rel + '/' : '/'));
 }
@@ -386,7 +389,8 @@ function check() {
   const files = [];
   (function walk(d) { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); e.isDirectory() ? walk(p) : (p.endsWith('.html') && files.push(p)); } })(OUT);
   const exists = href => {
-    const clean = href.split('#')[0].split('?')[0];
+    let clean = href.split('#')[0].split('?')[0];
+    if (BASE && clean.startsWith(BASE + '/')) clean = clean.slice(BASE.length);
     if (!clean) return true;
     const p = path.join(OUT, clean);
     return fs.existsSync(p) || fs.existsSync(path.join(p, 'index.html'));
@@ -410,5 +414,5 @@ fs.mkdirSync(OUT, { recursive: true });
 home(); robotsIndex(); models.forEach(modelPage); guidesIndex(); guides.forEach(guidePage);
 valuePage(); humanoidPage(); roombaPage(); flipsPage(); marketPage(); reportPage(); alertsPage(); aboutPage(); disclosurePage(); privacyPage(); notFound();
 extras();
-console.log(`built ${pages.length} pages -> docs/`);
+console.log(`built ${pages.length} pages -> docs/ (base ${BASE_URL})`);
 if (CHECK) check();
