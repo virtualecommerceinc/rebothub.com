@@ -1,0 +1,9 @@
+# Independent critic records — Hub
+
+All three critics reviewed the same frozen aggregate `84601851b1376f0e7183b8ce8b9f65bcba1910d1a96064c87884d0cc1875e5b2`. Sources: full R2 brief, frozen rubric, neutral REVIEW_PACKET, application files, screenshots and verification evidence. No author score or earlier critic findings were supplied. Read-only, fresh contexts; no nested delegation.
+
+- **hub_08_ux_critic:** No medium/high defect. Independently rehashed snapshot. Inspected desktop/mobile/detail screenshots and source. Low HUX-01: numbered covers make mobile library long; optional compact design deferred because hierarchy/readability pass. Low HUX-02: more direct learning-role copy could help; existing hero/guide hierarchy already establishes the knowledge role, no unsupported claims added. No independent live browser rerun by this critic.
+- **hub_09_tech_critic:** No blocking/medium Hub defect. Independently opened all six final-file guides at 390px and tested Tab/Escape; no background interactive focus or JS errors. Low: add semantic group role to category controls; accepted and implemented. Native browser chrome could briefly report BODY in traversal; parent strengthened explicit Tab cycling and retained strict containment assertions. No screen-reader or localhost/deployment verification.
+- **hub_10_trust_critic:** No medium/high/must-pass Hub trust finding. Verified final/workspace snapshot and preserved summary hash. Confirmed original concepts, no premises/inventory/activity, general-guide boundaries and no submission/storage primitives. Source/evidence review, no independent browser rerun.
+
+Cross-project evidence note from critics: an earlier Market detailOpen=false record was an immediate assertion before hashchange. Corrected test waits for dialog[open]; subsequent full direct-file runs pass. This was not dismissed as a passing result until re-tested.

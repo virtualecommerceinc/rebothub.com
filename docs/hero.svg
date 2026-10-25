@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Everyday robots, and a glimpse of what comes next</title>
+  <desc id="desc">Original concept illustration. A low disc vacuum in the foreground, a larger wheeled lawn robot behind it, and a faint articulated humanoid silhouette further back. These are fictional designs, not products or inventory.</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#EEEDE4"/><stop offset="1" stop-color="#DDE4D8"/></linearGradient>
+    <linearGradient id="body" x2="0.2" y2="1"><stop stop-color="#FFFDF4"/><stop offset="0.52" stop-color="#E9E9DE"/><stop offset="1" stop-color="#C9D1C4"/></linearGradient>
+    <linearGradient id="blue" x2="0.3" y2="1"><stop stop-color="#4269F0"/><stop offset="1" stop-color="#2446C5"/></linearGradient>
+    <linearGradient id="ink" x2="0" y2="1"><stop stop-color="#394540"/><stop offset="1" stop-color="#182521"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#FFFDF4" stop-opacity=".8"/><stop offset="1" stop-color="#FFFDF4" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#526453" stroke-opacity=".08"/></pattern>
+    <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="tiny"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <rect width="900" height="700" rx="28" fill="url(#paper)"/>
+  <rect width="900" height="700" rx="28" fill="url(#grid)"/>
+  <ellipse cx="500" cy="300" rx="370" ry="350" fill="url(#halo)"/>
+  <circle cx="623" cy="294" r="218" fill="none" stroke="#62735D" stroke-opacity=".14"/>
+  <circle cx="623" cy="294" r="192" fill="none" stroke="#62735D" stroke-opacity=".08"/>
+  <path d="M45 567H855M623 50V540" fill="none" stroke="#64725C" stroke-opacity=".16" stroke-dasharray="3 7"/>
+  <!-- Future humanoid: recessed, schematic, with no manufacturer identifiers. -->
+  <g opacity=".32" stroke="#657561" stroke-width="2" stroke-linejoin="round">
+    <ellipse cx="659" cy="487" rx="67" ry="9" fill="#728269" opacity=".25" stroke="none"/>
+    <path d="M637 137Q636 111 659 111Q681 111 682 137L678 166Q659 179 640 166Z" fill="#EAF0E2"/>
+    <path d="M643 139Q659 133 676 139L674 151Q659 158 645 151Z" fill="#536C63" stroke="none"/>
+    <path d="M652 176V190M666 176V190"/>
+    <path d="M616 202Q659 178 700 202L688 285Q660 306 629 286Z" fill="#EAF0E2"/>
+    <path d="M637 207H681L676 245H643Z" fill="#D4DFD0" stroke="none"/>
+    <path d="M635 292L680 292L687 322L660 336L632 321Z" fill="#EAF0E2"/>
+    <path d="M613 208L595 265L602 313L615 310L611 265L627 215Z" fill="#EAF0E2"/>
+    <circle cx="601" cy="266" r="9" fill="#D4DFD0"/>
+    <path d="M701 208L722 263L714 314L701 311L706 265L687 215Z" fill="#EAF0E2"/>
+    <circle cx="714" cy="265" r="9" fill="#D4DFD0"/>
+    <path d="M636 330L631 394L625 462L640 465L653 395L656 337Z" fill="#EAF0E2"/>
+    <path d="M665 337L670 395L676 464L691 461L689 393L682 328Z" fill="#EAF0E2"/>
+    <circle cx="641" cy="395" r="10" fill="#D4DFD0"/>
+    <circle cx="680" cy="394" r="10" fill="#D4DFD0"/>
+    <path d="M625 464L639 466L640 480L611 480Q609 471 625 464ZM677 466L691 463L706 477L678 480Z" fill="#EAF0E2"/>
+  </g>
+  <!-- Lawn robot: larger than the low vacuum; small front casters and large rear wheels. -->
+  <ellipse cx="473" cy="493" rx="185" ry="32" fill="#223B2D" opacity=".15" filter="url(#soft)"/>
+  <g>
+    <path d="M325 398Q320 382 337 364L403 315Q429 297 465 304L604 333Q626 339 632 360L644 422Q648 448 622 466L554 502Q535 512 505 507L351 468Q329 462 327 442Z" fill="url(#ink)"/>
+    <ellipse cx="391" cy="445" rx="38" ry="47" transform="rotate(-11 391 445)" fill="#1A2420"/>
+    <ellipse cx="391" cy="445" rx="25" ry="33" transform="rotate(-11 391 445)" fill="#445147"/>
+    <ellipse cx="391" cy="445" rx="12" ry="18" transform="rotate(-11 391 445)" fill="#85927E"/>
+    <path d="M364 417L372 411M361 434L369 431M365 452L372 449M374 468L380 463M399 480L400 471M416 464L409 460M421 445L413 443M414 425L407 427" stroke="#87917D" stroke-opacity=".35" stroke-width="3"/>
+    <ellipse cx="591" cy="457" rx="35" ry="44" transform="rotate(12 591 457)" fill="#1A2420"/>
+    <ellipse cx="591" cy="457" rx="23" ry="31" transform="rotate(12 591 457)" fill="#445147"/>
+    <ellipse cx="591" cy="457" rx="10" ry="16" transform="rotate(12 591 457)" fill="#85927E"/>
+    <path d="M336 388Q331 372 351 357L409 316Q432 299 462 306L602 335Q623 340 626 358L632 393Q632 411 610 423L541 459Q525 467 505 462L355 424Q340 420 338 407Z" fill="url(#body)"/>
+    <path d="M360 357L417 318Q433 307 458 313L598 342Q613 345 617 356L560 395Q542 406 519 401L371 369Q359 367 360 357Z" fill="url(#blue)"/>
+    <path d="M385 355L438 321L573 349L524 383Z" fill="#4972F1" opacity=".42"/>
+    <path d="M371 376L511 410Q536 416 557 404L618 366" fill="none" stroke="#FDFEF6" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M423 335L452 316L487 324L457 344Z" fill="#21372F"/>
+    <path d="M434 334L451 323L472 327L455 338Z" fill="#9FAF92"/>
+    <path d="M515 349L538 334L552 338L529 353Z" fill="#F0E5D6"/>
+    <path d="M520 346L534 337L542 339L528 348Z" fill="#9E4B39"/>
+    <path d="M352 391L387 400M352 398L387 407M352 405L382 413" stroke="#818E7B" stroke-width="3" stroke-linecap="round"/>
+    <path d="M568 434L611 411" stroke="#1D322B" stroke-width="8" stroke-linecap="round"/>
+    <path d="M571 432L605 414" stroke="#A3B095" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Low floor-care robot in the foreground. -->
+  <ellipse cx="260" cy="583" rx="157" ry="29" fill="#1F3829" opacity=".18" filter="url(#soft)"/>
+  <g>
+    <path d="M118 529V560Q120 593 254 604Q385 612 414 570L417 537Z" fill="url(#ink)"/>
+    <ellipse cx="268" cy="531" rx="150" ry="60" fill="url(#body)"/>
+    <ellipse cx="268" cy="528" rx="131" ry="49" fill="#F4F4E9" stroke="#D6DCCD" stroke-width="2"/>
+    <path d="M142 544Q154 576 263 582Q374 584 400 550" fill="none" stroke="#F8FAEF" stroke-opacity=".6" stroke-width="2"/>
+    <ellipse cx="270" cy="516" rx="36" ry="16" fill="#C2CDBB"/>
+    <path d="M234 510V520Q237 535 270 536Q304 536 306 521V510Z" fill="#2C4637"/>
+    <ellipse cx="270" cy="510" rx="36" ry="15" fill="url(#blue)"/>
+    <ellipse cx="270" cy="507" rx="24" ry="9" fill="#6F8CF4" opacity=".75"/>
+    <path d="M338 516L352 520" stroke="#556950" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="356" cy="528" r="3" fill="#254EE8"/>
+    <path d="M178 588L154 603M180 590L171 609M184 591L191 610" stroke="#263D30" stroke-width="4" stroke-linecap="round"/>
+    <path d="M317 593L357 590" stroke="#83977A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- Quiet diagrammatic marks, intentionally without product claims. -->
+  <g fill="none" stroke="#526B50" stroke-opacity=".45" stroke-width="1.2">
+    <path d="M180 482V434H96"/><circle cx="180" cy="482" r="3" fill="#526B50"/>
+    <path d="M552 345L595 282H764"/><circle cx="552" cy="345" r="3" fill="#526B50"/>
+    <path d="M700 137H773" stroke-dasharray="3 4"/>
+    <path d="M54 53H82M54 53V81M846 53H818M846 53V81M54 647H82M54 647V619M846 647H818M846 647V619"/>
+  </g>
+  <g fill="#566B50" font-family="Arial,sans-serif" font-size="12" letter-spacing="2">
+    <text x="96" y="421">01</text><text x="739" y="269">02</text><text x="748" y="123" opacity=".6">03</text>
+  </g>
+  <circle cx="778" cy="568" r="35" fill="#244EE8"/>
+  <path d="M762 566a17 17 0 0 1 28-11M791 552v10h-10M793 572a17 17 0 0 1-28 11M764 587v-10h10" fill="none" stroke="#F7F4E9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

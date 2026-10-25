@@ -1,0 +1,25 @@
+/* Hub-specific integration: comfortable navigation, resilient article text,
+   and visible keyboard focus against both paper and dark panels. */
+.nav-links a:not(.button),
+.footer-top .text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.brand { min-height: 44px; }
+.question summary { min-height: 44px; }
+.hero > *, .section-head > *, .split > *, .feature > * { min-width: 0; }
+.dialog-body { overflow-wrap: anywhere; }
+.dialog-body ul { padding-left: 22px; }
+.dialog-top > span { padding-right: 14px; }
+.close-button { flex: 0 0 44px; }
+.feature button:focus-visible { outline-color: #b6c7ff; }
+@media (max-width: 720px) {
+  .nav-links { align-items: center; }
+  .result-line { flex-wrap: wrap; gap: 8px; }
+  .result-line > span { max-width: 100%; }
+  .hero-art img { object-fit: contain; }
+  .dialog-top > span { font-size: 9px; line-height: 1.5; }
+  .dialog-body h2 { letter-spacing: -.04em; }
+  .dialog-body p, .dialog-body li { line-height: 1.7; }
+}

@@ -1,0 +1,227 @@
+{
+  "hub": {
+    "mode": "direct final file",
+    "checks": {
+      "desktopNoOverflow": true,
+      "reducedMotion": true,
+      "skipLinkFocus": true,
+      "sixGuides": true,
+      "noResults": true,
+      "reset": true,
+      "category": true,
+      "combinedNoResults": true,
+      "detailOpen": true,
+      "dialogFocus": true,
+      "backCloses": true,
+      "forwardOpens": true,
+      "escapeCloses": true,
+      "focusRestored": true,
+      "repeatedOpenClose": true,
+      "directGuide": true,
+      "unknownGuide": true,
+      "malformedHash": true,
+      "mobileNoOverflow": true,
+      "mobileNav": true,
+      "mobileDialogNoOverflow": true,
+      "keyboardDialogTab": true,
+      "keyboardDialogShiftTab": true,
+      "noPostRequests": true,
+      "noExternalRequests": true,
+      "noBrokenAssets": true,
+      "noJSErrors": true,
+      "focusStyle": true,
+      "companionTargetExists": true,
+      "companionNavigation": true
+    },
+    "errors": [],
+    "badResponses": [],
+    "requests": [
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/hero.svg",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/hero.svg",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/app.js",
+        "method": "GET"
+      }
+    ]
+  },
+  "market": {
+    "mode": "direct final file",
+    "checks": {
+      "desktopNoOverflow": true,
+      "reducedMotion": true,
+      "skipLinkFocus": true,
+      "eightSamples": true,
+      "noResults": true,
+      "combinedFilter": true,
+      "maxPriceNoResults": true,
+      "negativeFilterExplained": true,
+      "sort": true,
+      "saved": true,
+      "savedFilter": true,
+      "unsaveEmpty": true,
+      "unsaveFocusRecovery": true,
+      "detailOpen": true,
+      "honestContact": true,
+      "backCloses": true,
+      "forwardOpens": true,
+      "escapeCloses": true,
+      "repeatedOpenClose": true,
+      "directItem": true,
+      "unknownItem": true,
+      "malformedHash": true,
+      "invalidForm": true,
+      "errorFocus": true,
+      "negativePriceRejected": true,
+      "previewCreated": true,
+      "safeText": true,
+      "editPreserves": true,
+      "clearPreview": true,
+      "mobileNoOverflow": true,
+      "mobileNav": true,
+      "mobileDialogNoOverflow": true,
+      "keyboardDialogTab": true,
+      "keyboardDialogShiftTab": true,
+      "noPostRequests": true,
+      "noExternalRequests": true,
+      "noBrokenAssets": true,
+      "noJSErrors": true,
+      "storageFallback": true,
+      "focusStyle": true,
+      "companionTargetExists": true,
+      "companionNavigation": true,
+      "noJSControlsDisabled": true,
+      "noJSNoNavigation": true,
+      "scriptFailureClosed": true
+    },
+    "errors": [],
+    "badResponses": [],
+    "requests": [
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotMarketplace/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "file:///R:/Documents/Claude/Projects/RebotHub.com/hero.svg",
+        "method": "GET"
+      }
+    ]
+  }
+}

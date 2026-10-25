@@ -1,0 +1,167 @@
+{
+  "hub": {
+    "checks": {
+      "desktopNoOverflow": true,
+      "reducedMotion": true,
+      "skipLinkFocus": true,
+      "sixGuides": true,
+      "noResults": true,
+      "reset": true,
+      "category": true,
+      "combinedNoResults": true,
+      "detailOpen": true,
+      "dialogFocus": true,
+      "backCloses": true,
+      "forwardOpens": true,
+      "escapeCloses": true,
+      "focusRestored": true,
+      "repeatedOpenClose": true,
+      "directGuide": true,
+      "unknownGuide": true,
+      "mobileNoOverflow": true,
+      "mobileNav": true,
+      "mobileDialogNoOverflow": true,
+      "noPostRequests": true,
+      "noExternalRequests": true,
+      "noBrokenAssets": true,
+      "noJSErrors": true
+    },
+    "errors": [],
+    "badResponses": [],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:8765/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/hero.svg",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/hero.svg",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8765/app.js",
+        "method": "GET"
+      }
+    ]
+  },
+  "market": {
+    "checks": {
+      "desktopNoOverflow": true,
+      "reducedMotion": true,
+      "skipLinkFocus": true,
+      "eightSamples": true,
+      "noResults": true,
+      "combinedFilter": true,
+      "maxPriceNoResults": true,
+      "sort": true,
+      "saved": true,
+      "savedFilter": true,
+      "unsaveEmpty": true,
+      "detailOpen": true,
+      "honestContact": true,
+      "backCloses": true,
+      "forwardOpens": true,
+      "escapeCloses": true,
+      "repeatedOpenClose": true,
+      "directItem": true,
+      "unknownItem": true,
+      "invalidForm": true,
+      "errorFocus": true,
+      "negativePriceRejected": true,
+      "previewCreated": true,
+      "safeText": true,
+      "editPreserves": true,
+      "clearPreview": true,
+      "mobileNoOverflow": true,
+      "mobileNav": true,
+      "mobileDialogNoOverflow": true,
+      "noPostRequests": true,
+      "noExternalRequests": true,
+      "noBrokenAssets": true,
+      "noJSErrors": true
+    },
+    "errors": [],
+    "badResponses": [],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:8766/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/app.js",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/robots.svg",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/index.html",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/styles.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/responsive.css",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/data.js",
+        "method": "GET"
+      },
+      {
+        "url": "http://127.0.0.1:8766/app.js",
+        "method": "GET"
+      }
+    ]
+  }
+}

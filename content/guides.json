@@ -1,0 +1,259 @@
+[
+  {
+    "slug": "irobot-roomba-j7/battery-wont-hold-charge",
+    "model": "irobot-roomba-j7",
+    "title": "Roomba battery won't hold a charge: replace it in 20 minutes",
+    "symptom": "Short runtime, early return to dock, or a robot that dies mid-room",
+    "appliesTo": ["irobot-roomba-j7", "irobot-roomba-i7", "irobot-roomba-960"],
+    "provenance": "documented",
+    "provenanceNote": "Based on iRobot's published battery-replacement procedure and widespread owner reports. Not yet performed on camera by RebotHub; it is on the flip list.",
+    "riskClass": "battery",
+    "verdict": "fix",
+    "verdictText": "Fix. A battery is the cheapest repair that restores the most value. If a new battery does not help, the fault is elsewhere and this robot moves to the sell-for-parts column.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Confirm the diagnosis first: fully charge on the dock overnight, then run it. If it quits in under 20 minutes on a clean floor, the battery is the likely cause. If it dies instantly or never shows a charging light, read the not-charging guide first.",
+      "Power off and flip the robot. Remove the bin and the edge-sweeping brush.",
+      "Undo the screws holding the bottom cover. On the j and i series they are captive; loosen, do not pull.",
+      "Lift the old pack straight out. Note the connector orientation before you disconnect anything.",
+      "Fit the new pack, reconnect, close the cover, and tighten the captive screws until snug.",
+      "Place the robot on the dock and leave it for a full charge before the first run. Several short cycles will follow as the robot learns the new pack."
+    ],
+    "parts": [
+      { "name": "Replacement lithium battery for Roomba i and j series", "search": "Roomba i7 j7 replacement battery", "note": "Use iRobot's own pack or one listed as compatible with your exact model number. Avoid packs with no brand and no capacity marking." }
+    ],
+    "tools": ["Phillips screwdriver"],
+    "safety": "Lithium battery. Never puncture, crush, or heat the old pack. If it is swollen, do not press it back in; take it to a battery recycling point. Do not use third-party packs that lack a capacity and voltage marking.",
+    "faq": [
+      { "q": "How long should a Roomba battery last?", "a": "Owners commonly report two to three years of daily use before runtime drops noticeably. Storage habits matter: a Roomba left off its dock for months ages faster." },
+      { "q": "Can I just buy a new robot instead?", "a": "You can, but a battery costs a small fraction of a replacement robot and restores most of the lost runtime. A new robot is the better answer only when several other parts are also worn." }
+    ]
+  },
+  {
+    "slug": "irobot-roomba-j7/error-14-bin-not-detected",
+    "model": "irobot-roomba-j7",
+    "title": "Roomba \"Error 14\" (bin not detected): a two-minute fix most of the time",
+    "symptom": "Roomba says \"Error fourteen\" or \"Error one four\" and will not start",
+    "appliesTo": ["irobot-roomba-j7", "irobot-roomba-i7", "irobot-roomba-960"],
+    "provenance": "documented",
+    "provenanceNote": "iRobot's support article states that Error 14 or 1-4 means the robot is not detecting an installed bin, and that a replacement bin may be needed if the message persists. The 900 series says \"fourteen\"; the 600 and 800 series say \"one four\".",
+    "riskClass": "none",
+    "verdict": "fix",
+    "verdictText": "Fix. Nine times out of ten this is a dirty contact. The worst case is a replacement bin, which is still a low-cost part.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Remove the bin, wait five seconds, and push it back in until it clicks. Press CLEAN.",
+      "If the error returns, remove the bin and look at the two small metal contacts on the bin and the matching pair on the robot. Wipe both with a dry cloth or a cotton swab with a little isopropyl alcohol. Let it dry.",
+      "Check the bin for a cracked tab; a bin that sits a millimetre too low will not register.",
+      "If the robot still reports Error 14 with a clean, fully seated bin, try a known-good bin from the same series. If that clears it, replace the bin. If it does not, the sensor on the robot side is at fault; that is a sell-for-parts decision on an older robot."
+    ],
+    "parts": [
+      { "name": "Replacement bin for your Roomba series", "search": "Roomba j7 replacement bin", "note": "Bins are series-specific. Match the model number on the label under the robot." }
+    ],
+    "tools": ["Cotton swab", "Isopropyl alcohol"],
+    "safety": "",
+    "faq": [
+      { "q": "Does Error 14 mean the filter is full?", "a": "No. A full bin gives a different message. Error 14 is specifically about the robot not sensing that a bin is installed." }
+    ]
+  },
+  {
+    "slug": "irobot-roomba-i7/not-charging-on-dock",
+    "model": "irobot-roomba-i7",
+    "title": "Roomba not charging on its dock: contacts, dock, then battery",
+    "symptom": "No charging light, or the robot sits on the dock and stays dead",
+    "appliesTo": ["irobot-roomba-i7", "irobot-roomba-j7", "irobot-roomba-960"],
+    "provenance": "documented",
+    "provenanceNote": "Follows iRobot's published troubleshooting order (contacts, dock placement and power, then battery). Not yet performed on camera by RebotHub.",
+    "riskClass": "battery",
+    "verdict": "fix",
+    "verdictText": "Fix, in this order: clean contacts, prove the dock has power, then suspect the battery. Only if all three check out is the main board in question, and then the robot moves to sell-for-parts.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Check the dock. Its indicator light should blink when first plugged in. Try a different outlet. A dock that shows nothing with a known-good outlet is the problem, and docks are cheap used.",
+      "Wipe the two charging contacts under the robot and the two on the dock with a dry cloth, then a lightly dampened one. Dust and pet hair build an insulating film.",
+      "Place the dock against a wall on a hard floor with clear space in front, and set the robot on it by hand. Watch for the charging indicator within a minute.",
+      "If the light appears but the robot still will not run, charge overnight and then follow the battery guide.",
+      "If a new battery and a proven dock still produce nothing, the charging circuit on the main board is the likely fault. On an i7 or older that is a sell-for-parts decision; on a j7 get a quote before deciding."
+    ],
+    "parts": [
+      { "name": "Replacement Home Base dock for Roomba i and j series", "search": "Roomba i7 j7 home base charging dock", "note": "Used docks are plentiful because robots die before docks do." },
+      { "name": "Replacement battery", "search": "Roomba i7 j7 replacement battery", "note": "See the battery guide before buying." }
+    ],
+    "tools": ["Dry cloth"],
+    "safety": "If the battery is swollen, do not try to charge it. Remove it and take it to a recycling point.",
+    "faq": [
+      { "q": "Why does it charge for a while and then stop?", "a": "That pattern usually points to a worn battery or dirty contacts rather than the dock. Clean the contacts first; it costs nothing." }
+    ]
+  },
+  {
+    "slug": "irobot-roomba-960/error-1-and-error-6-stuck-or-cliff",
+    "model": "irobot-roomba-960",
+    "title": "Roomba \"Error 1\" and \"Error 6\": stuck wheels and dirty cliff sensors",
+    "symptom": "\"Error one, move Roomba to a new location\" or \"Error six\" on a dark rug",
+    "appliesTo": ["irobot-roomba-960", "irobot-roomba-i7"],
+    "provenance": "documented",
+    "provenanceNote": "iRobot's 800 and 900 series error chart: Error 1 means the robot is stuck or a wheel is hanging down; Error 6 means the cliff sensors are dirty or the robot is hanging over a drop or on a dark surface. Codes can differ on newer models.",
+    "riskClass": "none",
+    "verdict": "fix",
+    "verdictText": "Fix, usually with no parts at all. If Error 1 persists on a flat floor with a free wheel, the wheel module is the next suspect and is a moderate-cost part.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Error 1: pick the robot up, set it on flat open floor, and press CLEAN. If it now runs, it was simply stuck.",
+      "Error 1 again on a flat floor: flip the robot and press each drive wheel in. It should move freely and spring back. A wheel that sticks down or feels gritty needs its module cleaned or replaced.",
+      "Error 6: flip the robot and wipe the four cliff sensor windows along the front underside with a dry cloth. Compressed air helps.",
+      "Error 6 on a dark rug: that is the sensors working as designed. iRobot has sold a dark-floor firmware behaviour for some models; otherwise keep the robot off very dark rugs or use the app to mark them as a keep-out zone.",
+      "If Error 6 persists on a light, clean floor with clean sensor windows, a cliff sensor has failed. On a 960 that is a sell-for-parts decision."
+    ],
+    "parts": [
+      { "name": "Drive wheel module for Roomba 900 series", "search": "Roomba 960 wheel module", "note": "Left and right modules differ on some series. Match the side." }
+    ],
+    "tools": ["Dry cloth", "Compressed air"],
+    "safety": "",
+    "faq": [
+      { "q": "Is Error 6 a fault if it only happens on one rug?", "a": "No. The sensors are reading the dark surface as a drop. Mark the rug as a keep-out zone or lift it." }
+    ]
+  },
+  {
+    "slug": "roborock-s7/error-1-lidar-blocked",
+    "model": "roborock-s7",
+    "title": "Roborock \"Error 1\" (lidar blocked): clean the turret before you buy anything",
+    "symptom": "The robot says \"Error 1\" and will not start cleaning; the turret may not spin",
+    "appliesTo": ["roborock-s7", "roborock-s8-pro-ultra"],
+    "provenance": "documented",
+    "provenanceNote": "The Roborock Q7 Max manual lists Error 1 as \"LiDAR turret or laser blocked. Check for obstruction and retry.\" The open-source python-roborock library maps code 1 to the same condition. Some third-party sites describe Error 1 differently; we follow the manual.",
+    "riskClass": "none",
+    "verdict": "fix",
+    "verdictText": "Fix. Most Error 1 reports are a hair, a sticker, or a chair rung stopping the turret. If the turret will not spin freely with nothing in the way, the lidar module is a moderate-cost part and a medium-difficulty swap; get a used price for the whole robot before committing.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Lift the robot away from furniture. Look at the raised lidar turret on top: there is a bumper ring around it. Remove anything touching the ring.",
+      "Gently spin the turret by hand. It should turn freely. Wipe the dark window around it with a dry microfibre cloth.",
+      "Check that the turret's pressure bumper is not stuck down; press it and let it spring back.",
+      "Press the power button to restart and run a short spot clean.",
+      "If the turret does not spin on startup with nothing touching it, the lidar motor or belt has failed. Replacement lidar modules exist for the S7 family and the swap is a top-cover-off job; compare the part cost against the robot's used value before deciding."
+    ],
+    "parts": [
+      { "name": "Lidar (laser distance sensor) module for Roborock S7 series", "search": "Roborock S7 lidar LDS module", "note": "Confirm your exact model; S7, S7 MaxV and S8 modules are not all interchangeable." }
+    ],
+    "tools": ["Microfibre cloth", "Phillips screwdriver (for a module swap)"],
+    "safety": "",
+    "faq": [
+      { "q": "My robot says Error 1 but means something else in the app.", "a": "Roborock has renumbered codes across generations. Trust the text in your app and your manual over any numeric list, including this one." }
+    ]
+  },
+  {
+    "slug": "roborock-s7/error-3-and-error-4-wheels-or-cliff",
+    "model": "roborock-s7",
+    "title": "Roborock \"Error 3\" (wheels suspended) and \"Error 4\" (cliff sensor)",
+    "symptom": "The robot stops and reports Error 3 or Error 4",
+    "appliesTo": ["roborock-s7", "roborock-s8-pro-ultra"],
+    "provenance": "documented",
+    "provenanceNote": "The Roborock Q7 Max manual: Error 3 \"Wheels suspended. Move robot and restart.\" Error 4 \"Cliff sensor error. Clean cliff sensors, move robot away from drops and restart.\" A Roborock forum report describes an S7 MaxV with a persistent Error 4 that a sensor swap did not cure, so a stubborn Error 4 can be a board-level fault.",
+    "riskClass": "none",
+    "verdict": "fix",
+    "verdictText": "Fix for the price of a cloth. A persistent Error 4 after cleaning is the one case where we recommend getting a used price for the robot before spending on parts, because the fault may not be the sensor.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Error 3: set the robot on flat floor and restart. If it recurs on flat floor, flip it and check both wheels spring back when pressed.",
+      "Error 4: flip the robot and wipe the cliff sensor windows around the front edge with a dry cloth.",
+      "Move the robot at least a metre from any stair edge or dark rug and restart.",
+      "If Error 4 persists on a clean light floor, note which sensor the app names if it does. A single failed sensor is a low-cost part but a fiddly swap. If a new sensor does not clear it, stop spending: compare the robot's used value against a repair-shop quote."
+    ],
+    "parts": [
+      { "name": "Cliff sensor for Roborock S7 series", "search": "Roborock S7 cliff sensor", "note": "Only after cleaning has failed and the app points to one sensor." }
+    ],
+    "tools": ["Dry cloth"],
+    "safety": "",
+    "faq": []
+  },
+  {
+    "slug": "evergreen/handover-and-account-transfer",
+    "model": null,
+    "title": "The clean handover: accounts, maps and personal data when a robot changes hands",
+    "symptom": "You are buying or selling a connected robot and want nothing left behind",
+    "appliesTo": [],
+    "provenance": "editorial",
+    "provenanceNote": "General guidance. Each manufacturer's unlink and reset sequence is different; follow the official steps for your exact model and app version.",
+    "riskClass": "none",
+    "verdict": "check",
+    "verdictText": "Do this on every sale, in person if you can. A robot that is still tied to the old owner's account is a returned robot.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Seller: in the app, remove or delete the robot from your account before you factory reset. A reset alone does not always release the robot from the cloud account.",
+      "Seller: delete saved maps, schedules and room names. On camera-navigation robots, check whether the app stores obstacle images and delete those too.",
+      "Seller: note what transfers. Some accessories, subscriptions and extended warranties stay with the original purchaser.",
+      "Buyer: before paying, watch the seller remove the robot from their account. Then add it to yours while you are both there. If it will not pair, do not complete the sale.",
+      "Both: keep account passwords, full serial numbers and home layouts out of listing photos and messages.",
+      "Both: write down the model, what was included, known faults and what was agreed. Each keeps a copy."
+    ],
+    "parts": [],
+    "tools": [],
+    "safety": "",
+    "faq": [
+      { "q": "The seller says a factory reset is enough.", "a": "On some brands it is not. The robot can reset locally while the cloud account still lists it as the seller's device, which blocks you from pairing. Insist on seeing it removed in the app." }
+    ]
+  },
+  {
+    "slug": "evergreen/sell-your-robot-listing-and-shipping",
+    "model": null,
+    "title": "How to sell a used robot for the most money, and ship it without drama",
+    "symptom": "You want to sell a robot and get a fair price without a return",
+    "appliesTo": [],
+    "provenance": "editorial",
+    "provenanceNote": "General guidance drawn from marketplace practice. Battery shipping rules are the carrier's, and they change; check yours before you print a label.",
+    "riskClass": "battery",
+    "verdict": "check",
+    "verdictText": "A clean robot with a fresh filter, a stated runtime and proof of account removal sells faster and for more than the same robot listed dirty.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Clean it properly: bin, filter, brushes, sensor windows, dock contacts. Replace the filter and side brush if worn; they cost less than the price difference.",
+      "Charge it fully and run it. Write down the runtime you actually saw and the date. Put that sentence in the listing.",
+      "Photograph it from above, below, the dock, the contacts and every included accessory. Hide serial numbers.",
+      "Describe faults plainly. A known fault stated upfront is a discount; a known fault discovered later is a return.",
+      "Remove the robot from your account, then reset. Say so in the listing.",
+      "Price it against recent sold listings, not asking prices. RebotHub's value pages show the observations we have collected and their dates.",
+      "Shipping: keep the battery installed and the robot switched off; a lithium battery inside equipment generally ships under simpler rules than a loose pack, but your carrier decides. Large packs, like a legged robot's, need the proper lithium label.",
+      "Drain water tanks completely. Tape the bumper so it cannot be pressed in transit. Ship docks in a separate box if you have one."
+    ],
+    "parts": [],
+    "tools": [],
+    "safety": "Never ship a swollen or damaged lithium battery. Remove it and take it to a recycling point; sell the robot as battery-not-included.",
+    "faq": [
+      { "q": "Should I list on RebotHub's market or on eBay?", "a": "Today, eBay, because that is where the buyers are. Our market page gives you a pre-filled title and condition template. When our listings page has real volume we will say so." }
+    ]
+  },
+  {
+    "slug": "evergreen/buying-a-used-robot-inspection",
+    "model": null,
+    "title": "Buying a used robot: the ten-minute inspection that catches most lemons",
+    "symptom": "You found a used robot at a good price and want to know what to check",
+    "appliesTo": [],
+    "provenance": "editorial",
+    "provenanceNote": "General guidance. Model hubs carry the specific checks for each robot.",
+    "riskClass": "none",
+    "verdict": "check",
+    "verdictText": "Run it, watch the account removal, check the battery and the contacts, confirm the dock. Walk away from anything the seller will not demonstrate.",
+    "reviewedBy": null,
+    "reviewedOn": null,
+    "steps": [
+      "Ask for the exact model number from the label, not the product family name.",
+      "Have the seller start it from the dock and let it run for ten minutes while you talk. Early return or an error code is your answer.",
+      "Watch the seller remove it from their account in the app, then pair it to yours before money changes hands.",
+      "Flip it: press both wheels, spin the brushes, look at the charging contacts and the sensor windows.",
+      "Confirm the dock powers on and every accessory in the listing is present.",
+      "Compare the price against sold observations, not asking prices, and against the cost of the first repair it will need."
+    ],
+    "parts": [],
+    "tools": [],
+    "safety": "",
+    "faq": []
+  }
+]

@@ -1,0 +1,235 @@
+[
+  {
+    "slug": "irobot-roomba-j7",
+    "brand": "iRobot",
+    "brandSlug": "irobot",
+    "name": "Roomba j7 and j7+",
+    "category": "Robot vacuum",
+    "track": "home",
+    "launched": "2021",
+    "summary": "The camera-navigating Roomba that promised to dodge pet accidents. Still common, still fixable, and its value now depends on what iRobot's new owner does with the app.",
+    "supportNote": "iRobot filed Chapter 11 on 14 December 2025 and emerged on 23 January 2026 as a subsidiary of Shenzhen Picea Robotics. iRobot said app and support would continue. Check the current app status before paying for a used j7 that depends on the app for mapping.",
+    "officialSupport": "https://homesupport.irobot.com/",
+    "symptoms": [
+      { "symptom": "Runs for a few minutes, then returns to dock or dies", "cause": "Worn lithium battery", "verdict": "fix", "cost": "low", "time": "20 min", "difficulty": "Easy", "guide": "irobot-roomba-j7/battery-wont-hold-charge" },
+      { "symptom": "Says \"Error 14\" or \"1-4\", bin not detected", "cause": "Dirty bin contacts or a bin that no longer registers", "verdict": "fix", "cost": "low", "time": "10 min", "difficulty": "Easy", "guide": "irobot-roomba-j7/error-14-bin-not-detected" },
+      { "symptom": "Will not charge on the dock", "cause": "Dirty charging contacts, dock power, or battery", "verdict": "fix", "cost": "low", "time": "15 min", "difficulty": "Easy", "guide": "irobot-roomba-i7/not-charging-on-dock" },
+      { "symptom": "Clean Base will not empty the bin", "cause": "Clogged evacuation path or full bag", "verdict": "fix", "cost": "low", "time": "15 min", "difficulty": "Easy", "guide": null },
+      { "symptom": "Gets lost, maps badly, camera errors in daylight-free rooms", "cause": "Front camera or navigation module", "verdict": "sell", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null },
+      { "symptom": "Brushes, filter, side brush worn", "cause": "Consumables", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": null }
+    ],
+    "buyChecks": [
+      "Ask the seller to run it from the dock for ten minutes in front of you; watch for an early return.",
+      "Open the app on the seller's phone and watch them remove the robot from their account. Do not accept a factory reset alone.",
+      "Lift the bin and check the two metal contacts for corrosion.",
+      "Check the Clean Base bag and the evacuation port for a packed clog.",
+      "Confirm the dock, power supply, and at least one spare bag are included."
+    ],
+    "sellChecks": [
+      "Run a full clean cycle, then empty and wash the bin and filter so the photos show a clean robot.",
+      "Remove the robot from your iRobot account in the app before handover, then factory reset.",
+      "Photograph the underside, the bin contacts, and the charging contacts; buyers of j7s ask about all three.",
+      "State the battery runtime you actually observed and the date you observed it.",
+      "Ship with the battery installed and the robot powered off; lithium batteries inside equipment ship more easily than loose packs. Check your carrier's rules."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  },
+  {
+    "slug": "irobot-roomba-i7",
+    "brand": "iRobot",
+    "brandSlug": "irobot",
+    "name": "Roomba i7 and i7+",
+    "category": "Robot vacuum",
+    "track": "home",
+    "launched": "2018",
+    "summary": "The first Roomba with the self-emptying Clean Base and persistent maps. Huge installed base, cheap parts, and the easiest Roomba to keep alive.",
+    "supportNote": "Same ownership change as every Roomba: iRobot is now a Picea subsidiary after its January 2026 Chapter 11 exit. The i7 works as a button-press vacuum without the app, so an app outage is not a dead robot.",
+    "officialSupport": "https://homesupport.irobot.com/",
+    "symptoms": [
+      { "symptom": "Will not charge on the dock, or charges then dies", "cause": "Dirty contacts, dock power, or worn battery", "verdict": "fix", "cost": "low", "time": "15 min", "difficulty": "Easy", "guide": "irobot-roomba-i7/not-charging-on-dock" },
+      { "symptom": "Short runtime", "cause": "Worn lithium battery", "verdict": "fix", "cost": "low", "time": "20 min", "difficulty": "Easy", "guide": "irobot-roomba-j7/battery-wont-hold-charge" },
+      { "symptom": "\"Error 14\" bin not detected", "cause": "Bin contacts", "verdict": "fix", "cost": "low", "time": "10 min", "difficulty": "Easy", "guide": "irobot-roomba-j7/error-14-bin-not-detected" },
+      { "symptom": "Loud grinding from the brush area", "cause": "Hair in the brush bearings or a worn brush module", "verdict": "fix", "cost": "low", "time": "15 min", "difficulty": "Easy", "guide": null },
+      { "symptom": "Drives in circles or one wheel drags", "cause": "Wheel module", "verdict": "fix", "cost": "moderate", "time": "30 min", "difficulty": "Medium", "guide": null },
+      { "symptom": "Dead, no lights, new battery does not help", "cause": "Main board", "verdict": "sell", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null }
+    ],
+    "buyChecks": [
+      "Press CLEAN with the robot off the dock; it should start within a few seconds and run without an immediate error.",
+      "Watch the seller remove it from their account in the iRobot app.",
+      "Spin both drive wheels by hand; they should turn freely with slight resistance and spring back when pressed.",
+      "Look under the brush guard for hair wound into the bearings.",
+      "If a Clean Base is included, make sure it powers on and the bag door closes."
+    ],
+    "sellChecks": [
+      "Replace the filter and side brush if they are visibly worn; it costs little and lifts the price.",
+      "Remove from your account, factory reset, and say so in the listing.",
+      "List the exact runtime you observed on a fresh charge.",
+      "Include the dock and power supply; a robot without a dock sells for parts money.",
+      "Pack the robot upright in its original foam if you kept it, or wrap the bumper so it cannot be pressed in transit."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  },
+  {
+    "slug": "irobot-roomba-960",
+    "brand": "iRobot",
+    "brandSlug": "irobot",
+    "name": "Roomba 960",
+    "category": "Robot vacuum",
+    "track": "home",
+    "launched": "2016",
+    "summary": "A ten-year-old camera-mapping Roomba that still cleans. Parts are cheap and plentiful, but its used value is low enough that most repairs beyond a battery are not worth paying someone else to do.",
+    "supportNote": "Old enough that app features may be reduced over time. Works as a button-press vacuum without the app.",
+    "officialSupport": "https://homesupport.irobot.com/",
+    "symptoms": [
+      { "symptom": "\"Error 1\": stuck, a wheel hanging down", "cause": "Robot is stuck, or a wheel is not making contact", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": "irobot-roomba-960/error-1-and-error-6-stuck-or-cliff" },
+      { "symptom": "\"Error 6\": stuck over a cliff or dirty cliff sensors", "cause": "Dirty cliff sensors or a dark rug", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": "irobot-roomba-960/error-1-and-error-6-stuck-or-cliff" },
+      { "symptom": "Short runtime", "cause": "Worn battery", "verdict": "fix", "cost": "low", "time": "20 min", "difficulty": "Easy", "guide": "irobot-roomba-j7/battery-wont-hold-charge" },
+      { "symptom": "Will not charge", "cause": "Contacts, dock, or battery", "verdict": "fix", "cost": "low", "time": "15 min", "difficulty": "Easy", "guide": "irobot-roomba-i7/not-charging-on-dock" },
+      { "symptom": "Navigation lost, camera errors", "cause": "Camera or main board", "verdict": "replace", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null }
+    ],
+    "buyChecks": [
+      "Pay parts money only; a 960 that needs anything beyond a battery is not a bargain.",
+      "Confirm it starts, runs for five minutes, and returns to the dock.",
+      "Check the cliff sensor windows underneath for dirt and scratches."
+    ],
+    "sellChecks": [
+      "Be upfront about age and runtime; buyers of a 960 are looking for a cheap second robot for one room.",
+      "Remove from your account and factory reset.",
+      "A 960 with a fresh battery and clean filter sells faster than one without; a battery costs less than the price difference in most markets."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  },
+  {
+    "slug": "roborock-s7",
+    "brand": "Roborock",
+    "brandSlug": "roborock",
+    "name": "Roborock S7 and S7 MaxV",
+    "category": "Robot vacuum and mop",
+    "track": "home",
+    "launched": "2021",
+    "summary": "Lidar navigation, sonic mopping, and one of the biggest owner communities of any robot vacuum. Error codes are spoken aloud, which makes diagnosis easier than on most robots.",
+    "supportNote": "Roborock numbers its error codes differently across generations. The verdicts below follow the Roborock Q7 Max manual table and the open-source python-roborock mapping, both of which agree for S-series codes 1, 3 and 4. Check your own manual if your robot says something different.",
+    "officialSupport": "https://us.roborock.com/pages/support",
+    "symptoms": [
+      { "symptom": "\"Error 1\": lidar turret or laser blocked", "cause": "Obstruction on the lidar turret, or a turret that no longer spins", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": "roborock-s7/error-1-lidar-blocked" },
+      { "symptom": "\"Error 3\": wheels suspended", "cause": "Robot lifted or wedged", "verdict": "fix", "cost": "low", "time": "2 min", "difficulty": "Easy", "guide": "roborock-s7/error-3-and-error-4-wheels-or-cliff" },
+      { "symptom": "\"Error 4\": cliff sensor error", "cause": "Dirty cliff sensor or a failed sensor", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": "roborock-s7/error-3-and-error-4-wheels-or-cliff" },
+      { "symptom": "Lidar turret does not spin, error persists after cleaning", "cause": "Lidar module", "verdict": "check", "cost": "moderate", "time": "45 min", "difficulty": "Medium", "guide": "roborock-s7/error-1-lidar-blocked" },
+      { "symptom": "Mop does not vibrate, or water does not flow", "cause": "Mop module or pump", "verdict": "fix", "cost": "moderate", "time": "30 min", "difficulty": "Medium", "guide": null },
+      { "symptom": "Short runtime", "cause": "Battery", "verdict": "fix", "cost": "moderate", "time": "30 min", "difficulty": "Medium", "guide": null },
+      { "symptom": "Dead after water ingress, board damage", "cause": "Main board", "verdict": "sell", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null }
+    ],
+    "buyChecks": [
+      "Start it off the dock and listen: the lidar turret should spin up silently within seconds.",
+      "Ask the seller to delete the robot from their Roborock app in front of you.",
+      "Look at the water tank seal and the mop plate clip; both wear and both are cheap but tell you how it was treated.",
+      "Run it over a dark rug edge for a minute to prove the cliff sensors are not confused.",
+      "Confirm the dock type: standard, Auto-Empty, or Empty Wash Fill. They are not interchangeable."
+    ],
+    "sellChecks": [
+      "Clean the lidar window and the cliff sensors; the first five minutes of a buyer's test decide the sale.",
+      "Delete the robot from your app and reset Wi-Fi.",
+      "State which dock is included and whether the mop module is present.",
+      "Drain the water tank completely before shipping.",
+      "Ship with the battery installed and the robot off; tape the bumper so it cannot be pressed in transit."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  },
+  {
+    "slug": "roborock-s8-pro-ultra",
+    "brand": "Roborock",
+    "brandSlug": "roborock",
+    "name": "Roborock S8 Pro Ultra",
+    "category": "Robot vacuum and mop with dock",
+    "track": "home",
+    "launched": "2023",
+    "summary": "A flagship with a dock that washes, dries and refills. Expensive new, which is exactly why a two-year-old one is the most interesting used robot in the category.",
+    "supportNote": "Dock faults are the most common reason an S8 Pro Ultra is sold. Many dock problems are a clogged filter or a dry pump rather than a dead dock.",
+    "officialSupport": "https://us.roborock.com/pages/support",
+    "symptoms": [
+      { "symptom": "\"Error 1\": lidar blocked", "cause": "Obstruction or turret", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": "roborock-s7/error-1-lidar-blocked" },
+      { "symptom": "\"Error 4\": cliff sensor", "cause": "Dirty or failed cliff sensor", "verdict": "fix", "cost": "low", "time": "5 min", "difficulty": "Easy", "guide": "roborock-s7/error-3-and-error-4-wheels-or-cliff" },
+      { "symptom": "Dock will not wash or dry the mop", "cause": "Clogged dock filter, empty clean-water tank, or pump", "verdict": "fix", "cost": "low", "time": "20 min", "difficulty": "Easy", "guide": null },
+      { "symptom": "Dock will not auto-empty", "cause": "Full bag or blocked duct", "verdict": "fix", "cost": "low", "time": "10 min", "difficulty": "Easy", "guide": null },
+      { "symptom": "Robot works, dock is dead", "cause": "Dock electronics", "verdict": "check", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null },
+      { "symptom": "Robot dead, dock works", "cause": "Battery or main board", "verdict": "check", "cost": "moderate", "time": "30 min", "difficulty": "Medium", "guide": null }
+    ],
+    "buyChecks": [
+      "Run one full mop-wash cycle at the dock in front of you; it is the most expensive part to replace.",
+      "Ask the seller to remove the robot from the Roborock app.",
+      "Check the dock's clean-water tank for scale and the dirty-water tank for smell; both tell you about maintenance.",
+      "Confirm the dock ramp, mop pads, and dust bag are included."
+    ],
+    "sellChecks": [
+      "Run a dock self-clean, empty and dry both tanks, and replace the dust bag before photos.",
+      "Delete the robot from your app.",
+      "Photograph the dock interior; serious buyers ask for it.",
+      "Ship the dock and robot in separate boxes if you still have them; the dock is heavy enough to damage the robot in one box."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  },
+  {
+    "slug": "ecovacs-deebot-x1-omni",
+    "brand": "Ecovacs",
+    "brand_slug": "ecovacs",
+    "brandSlug": "ecovacs",
+    "name": "Ecovacs Deebot X1 Omni",
+    "category": "Robot vacuum and mop with dock",
+    "track": "home",
+    "launched": "2022",
+    "summary": "Ecovacs' first all-in-one station robot, with a voice assistant built in. Sold in large numbers, now turning up used as owners upgrade.",
+    "supportNote": "Ecovacs documents its error messages in the app rather than as spoken numeric codes. The symptoms below are the ones owners report most; we have not yet performed these repairs ourselves and the rows say so.",
+    "officialSupport": "https://www.ecovacs.com/us/support",
+    "symptoms": [
+      { "symptom": "Station will not wash mops or refill", "cause": "Empty clean tank, clogged filter, or pump", "verdict": "fix", "cost": "low", "time": "20 min", "difficulty": "Easy", "guide": null },
+      { "symptom": "Main brush stalls, brush error in app", "cause": "Hair wrap or worn brush", "verdict": "fix", "cost": "low", "time": "10 min", "difficulty": "Easy", "guide": null },
+      { "symptom": "Short runtime", "cause": "Battery", "verdict": "fix", "cost": "moderate", "time": "30 min", "difficulty": "Medium", "guide": null },
+      { "symptom": "Lidar error, robot spins in place", "cause": "Lidar module", "verdict": "check", "cost": "moderate", "time": "45 min", "difficulty": "Medium", "guide": null },
+      { "symptom": "Station dead", "cause": "Station electronics", "verdict": "sell", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null }
+    ],
+    "buyChecks": [
+      "Run one station wash cycle in front of you.",
+      "Watch the seller remove the robot from their Ecovacs account in the app.",
+      "Check the station tanks for scale and smell.",
+      "Confirm the mop plates and dust bag are included."
+    ],
+    "sellChecks": [
+      "Run a station self-clean, empty both tanks, and replace the dust bag before photos.",
+      "Remove the robot from your Ecovacs account and reset Wi-Fi.",
+      "Ship the station and robot separately if possible."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  },
+  {
+    "slug": "unitree-go2",
+    "brand": "Unitree",
+    "brandSlug": "unitree",
+    "name": "Unitree Go2",
+    "category": "Quadruped robot",
+    "track": "humanoid",
+    "launched": "2023",
+    "summary": "The most widely owned legged robot outside a lab. Its used market is where the used-humanoid market will be rehearsed first: licence tiers, firmware, and actuator wear decide value more than cosmetics.",
+    "supportNote": "Go2 trims (Air, Pro, EDU) differ in what the owner is allowed to do with the software. A used Go2 is only worth the EDU premium if the EDU licence demonstrably transfers. Ask Unitree before paying for it.",
+    "officialSupport": "https://www.unitree.com/",
+    "symptoms": [
+      { "symptom": "A leg is weak, hot, or clicks", "cause": "Actuator wear or damage", "verdict": "check", "cost": "high", "time": "n/a", "difficulty": "Hard", "guide": null },
+      { "symptom": "Short runtime", "cause": "Battery pack", "verdict": "fix", "cost": "high", "time": "5 min swap", "difficulty": "Easy (swap), not a repair", "guide": null },
+      { "symptom": "Will not connect to app or SDK", "cause": "Firmware or network configuration", "verdict": "fix", "cost": "low", "time": "varies", "difficulty": "Medium", "guide": null },
+      { "symptom": "Fall damage to shell or lidar", "cause": "Impact", "verdict": "check", "cost": "moderate", "time": "n/a", "difficulty": "Medium", "guide": null }
+    ],
+    "buyChecks": [
+      "Ask for the exact trim (Air, Pro, EDU) and proof of what the software licence allows a second owner to do.",
+      "Watch it stand, walk, and recover from a push; listen for clicking from any leg.",
+      "Ask for the actuator temperature readout after five minutes of walking.",
+      "Confirm the number of battery packs and the charger are included; spare packs are a large share of the value.",
+      "Ask whether the robot was ever opened or firmware-modified."
+    ],
+    "sellChecks": [
+      "State the trim, firmware version, and what you were told about licence transfer.",
+      "Record a short video of a stand, walk, and push recovery; it answers most buyer questions.",
+      "Count and state battery packs and cycles if the app shows them.",
+      "Ship batteries according to your carrier's lithium rules; these packs are large enough to need the proper label."
+    ],
+    "value": { "observations": 0, "window": "90 days", "band": null, "confidence": null, "updated": null }
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "hub": {
+    "staticLinksAssets": "pass",
+    "syntax": "pass",
+    "uniqueIDs": "pass",
+    "files": {
+      "index.html": "6ccc1d1fa55af7dd5215df6155df149a7438ac54cea960576a2198f78095adb8",
+      "styles.css": "fb5173ce412360e88b5fe3dcd50defa0b36f66fef61eca7713b98561832d9033",
+      "responsive.css": "0bda1f4b94f8bf54e6dc6871cfb6c9a6de343e5fdaa473766e0c636bd4570001",
+      "app.js": "e0333e44d96cb0fcc34652ee61aa5d48d96ce9cfe578bff2f435a9b170855eac",
+      "data.js": "48876bf0a2fcaeac9a01f8260941b8b0ef46fc40829d19ac8bdfe29e0ec3b26c",
+      "favicon.svg": "756636e823db2d1aeb1b30c4a5b76d46455946dc6f43ba10932587e996dbe916",
+      "hero.svg": "0997039d7e35c1fd5bfa922c35ce7fb57d5126f07c367dc1223d8bcf3dc276f7",
+      "README.md": "8b6c316f99b8e3790b5af95b1cd490f005a2419d487e1c03b418ef2c422b1154"
+    },
+    "snapshot": "041db0fdfed8dae4d5e68e2e8db4888c02f8c9e3440cd94c4088737f3013b54d"
+  },
+  "market": {
+    "staticLinksAssets": "pass",
+    "syntax": "pass",
+    "uniqueIDs": "pass",
+    "files": {
+      "index.html": "03668135719f3a3a4924418b008e11351f9bf2340a16c94e730258f394090a79",
+      "styles.css": "fb5173ce412360e88b5fe3dcd50defa0b36f66fef61eca7713b98561832d9033",
+      "responsive.css": "231e24ccb4b4bb41be9830299655c9ed32766f4e6e09b73981682bf9b3a11fa3",
+      "app.js": "a09e22a86c5de8fcd6ae67b25e2e616bac5dad762bcd79dc83c0f57bd6b29093",
+      "data.js": "673e64ee6ca5da9193a12e30fb04d115b7c39df95bb627e37c7ee34ceddb02e9",
+      "favicon.svg": "756636e823db2d1aeb1b30c4a5b76d46455946dc6f43ba10932587e996dbe916",
+      "robots.svg": "c66d6968ce5412d36b809d8fef43d4c9439660bd1ca9a6a545944299936fa44c",
+      "README.md": "5c71b670085637f4ee8c3aa2740215e0eb31b8ac7a0db0c62f81625194d3cb8e"
+    },
+    "snapshot": "c60901ce9cda507b4e6a7d4c2f2411e8d2282302c5f36ea58fc48c1c67818ce9"
+  },
+  "contrast": {
+    "#172421 on #f5f3ec": 14.43,
+    "#4d5d56 on #f5f3ec": 6.27,
+    "#244cdb on #f5f3ec": 6.04,
+    "#ffffff on #244cdb": 6.71,
+    "#c8d2ca on #172421": 10.32,
+    "#aec0ff on #172421": 8.99,
+    "#a02222 on #fffef9": 7.57
+  }
+}

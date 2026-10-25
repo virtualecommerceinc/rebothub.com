@@ -1,0 +1,32 @@
+# RebotHub
+
+> Everyday robots. Longer lives. Fix it, value it, or give it a second home. RebotHub is the second-life guide for the robots people actually own, and the first stop for the used humanoids that are coming.
+
+RebotHub publishes symptom-led repair guides with a Fix / Sell / Replace verdict, a used-price index (Rebot Value Index) that shows sample size and date on every figure, and buying, selling and handover checklists for consumer and legged robots. Guides carry a provenance badge (hands-on, documented, owner-reported, editorial). Values with fewer than three observations are shown as "collecting".
+
+## Model hubs
+- [Roomba j7 and j7+](https://rebothub.com/robots/irobot-roomba-j7/): The camera-navigating Roomba that promised to dodge pet accidents. Still common, still fixable, and its value now depends on what iRobot's new owner does with the app.
+- [Roomba i7 and i7+](https://rebothub.com/robots/irobot-roomba-i7/): The first Roomba with the self-emptying Clean Base and persistent maps. Huge installed base, cheap parts, and the easiest Roomba to keep alive.
+- [Roomba 960](https://rebothub.com/robots/irobot-roomba-960/): A ten-year-old camera-mapping Roomba that still cleans. Parts are cheap and plentiful, but its used value is low enough that most repairs beyond a battery are not worth paying someone else to do.
+- [Roborock S7 and S7 MaxV](https://rebothub.com/robots/roborock-s7/): Lidar navigation, sonic mopping, and one of the biggest owner communities of any robot vacuum. Error codes are spoken aloud, which makes diagnosis easier than on most robots.
+- [Roborock S8 Pro Ultra](https://rebothub.com/robots/roborock-s8-pro-ultra/): A flagship with a dock that washes, dries and refills. Expensive new, which is exactly why a two-year-old one is the most interesting used robot in the category.
+- [Ecovacs Deebot X1 Omni](https://rebothub.com/robots/ecovacs-deebot-x1-omni/): Ecovacs' first all-in-one station robot, with a voice assistant built in. Sold in large numbers, now turning up used as owners upgrade.
+- [Unitree Go2](https://rebothub.com/robots/unitree-go2/): The most widely owned legged robot outside a lab. Its used market is where the used-humanoid market will be rehearsed first: licence tiers, firmware, and actuator wear decide value more than cosmetics.
+
+## Fix guides
+- [Roomba battery won't hold a charge: replace it in 20 minutes](https://rebothub.com/fix/irobot-roomba-j7/battery-wont-hold-charge/): Short runtime, early return to dock, or a robot that dies mid-room
+- [Roomba "Error 14" (bin not detected): a two-minute fix most of the time](https://rebothub.com/fix/irobot-roomba-j7/error-14-bin-not-detected/): Roomba says "Error fourteen" or "Error one four" and will not start
+- [Roomba not charging on its dock: contacts, dock, then battery](https://rebothub.com/fix/irobot-roomba-i7/not-charging-on-dock/): No charging light, or the robot sits on the dock and stays dead
+- [Roomba "Error 1" and "Error 6": stuck wheels and dirty cliff sensors](https://rebothub.com/fix/irobot-roomba-960/error-1-and-error-6-stuck-or-cliff/): "Error one, move Roomba to a new location" or "Error six" on a dark rug
+- [Roborock "Error 1" (lidar blocked): clean the turret before you buy anything](https://rebothub.com/fix/roborock-s7/error-1-lidar-blocked/): The robot says "Error 1" and will not start cleaning; the turret may not spin
+- [Roborock "Error 3" (wheels suspended) and "Error 4" (cliff sensor)](https://rebothub.com/fix/roborock-s7/error-3-and-error-4-wheels-or-cliff/): The robot stops and reports Error 3 or Error 4
+- [The clean handover: accounts, maps and personal data when a robot changes hands](https://rebothub.com/fix/evergreen/handover-and-account-transfer/): You are buying or selling a connected robot and want nothing left behind
+- [How to sell a used robot for the most money, and ship it without drama](https://rebothub.com/fix/evergreen/sell-your-robot-listing-and-shipping/): You want to sell a robot and get a fair price without a return
+- [Buying a used robot: the ten-minute inspection that catches most lemons](https://rebothub.com/fix/evergreen/buying-a-used-robot-inspection/): You found a used robot at a good price and want to know what to check
+
+## Reference
+- [Rebot Value Index and methodology](https://rebothub.com/value/)
+- [Humanoid track](https://rebothub.com/humanoid/)
+- [Roomba after iRobot](https://rebothub.com/roomba-after-irobot/)
+- [Rebot Flips ledger](https://rebothub.com/flips/)
+- [About and editorial policy](https://rebothub.com/about/)

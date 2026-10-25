@@ -1,0 +1,21 @@
+'use strict';
+const guides=window.REBOT_GUIDES;
+const $=s=>document.querySelector(s);
+const grid=$('#guide-grid'),dialog=$('#detail');
+let category='All guides', opener=null;
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function render(){const q=$('#guide-search').value.trim().toLowerCase();const rows=guides.filter(g=>(category==='All guides'||g.category===category)&&[g.title,g.deck,g.category,...g.sections.map(s=>s.body)].join(' ').toLowerCase().includes(q));$('#guide-count').textContent=`${rows.length} ${rows.length===1?'guide':'guides'} to explore`;grid.innerHTML=rows.length?rows.map((g,i)=>`<article class="card"><button class="card-open" data-guide="${esc(g.id)}"><div class="card-cover" aria-hidden="true"><span class="number">0${guides.indexOf(g)+1}</span><span class="glyph">↗</span></div><h3>${esc(g.title)}</h3></button><div class="meta"><span>${esc(g.category)}</span><span>${esc(g.readTime)}</span></div><p>${esc(g.deck)}</p></article>`).join(''):'<div class="empty"><h3>No guides match yet.</h3><p>Try a broader search or reset your filters.</p><button class="button" data-reset>Reset filters</button></div>';document.querySelectorAll('#guide-categories button').forEach(b=>b.setAttribute('aria-pressed',String(b.textContent===category)));}
+$('#guide-categories').innerHTML=['All guides','Buying','Ownership','Care','Future'].map(c=>`<button class="pill" aria-pressed="${c===category}">${c}</button>`).join('');
+$('#guide-categories').addEventListener('click',e=>{if(e.target.tagName==='BUTTON'){category=e.target.textContent;render();}});
+$('#guide-search').addEventListener('input',render);
+function reset(){category='All guides';$('#guide-search').value='';render();$('#guide-search').focus();}
+$('#reset-guides').addEventListener('click',reset);
+function openGuide(id){const g=guides.find(g=>g.id===id);$('#detail-content').innerHTML=g?`<span class="eyebrow">${esc(g.category)} / ${esc(g.readTime)}</span><h2 id="detail-title" tabindex="-1">${esc(g.title)}</h2><p>${esc(g.deck)}</p><p class="editorial-note">${esc(window.REBOT_PROVENANCE)}</p>${g.sections.map(s=>`<h3>${esc(s.heading)}</h3><p>${esc(s.body)}</p>`).join('')}<h3>Questions to take with you</h3><ul>${g.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ul><p class="editorial-note">Prepared 25 October 2026 · Original Rebot planning content. No device testing or expert review claimed.</p>`:'<h2 id="detail-title" tabindex="-1">Guide not found.</h2><p>This local link does not match a guide. Close this panel to return to the library.</p>';if(!dialog.open){dialog.showModal();}$('#detail-title').focus();}
+function sync(){if(location.hash.startsWith('#guide=')){let id;try{id=decodeURIComponent(location.hash.slice(7));}catch{id='invalid';}openGuide(id);}else if(dialog.open){dialog.close();opener?.focus();}}
+function close(){history.replaceState(null,'',location.pathname+location.search+'#guides');dialog.close();opener?.focus();}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-guide]');if(b){opener=b;const hash='#guide='+encodeURIComponent(b.dataset.guide);if(location.hash===hash){openGuide(b.dataset.guide);}else{location.hash=hash;}}if(e.target.closest('[data-reset]'))reset();});
+$('#close-detail').addEventListener('click',close);dialog.addEventListener('cancel',e=>{e.preventDefault();close();});window.addEventListener('hashchange',sync);
+dialog.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...dialog.querySelectorAll('button,a[href],input,select,textarea,[tabindex="0"]')].filter(el=>!el.disabled&&!el.hidden&&el.getClientRects().length);const first=items[0],last=items[items.length-1];if(!items.includes(document.activeElement)||e.shiftKey&&document.activeElement===first||!e.shiftKey&&document.activeElement===last){e.preventDefault();(e.shiftKey?last:first)?.focus();}});
+$('.mobile-nav-toggle').addEventListener('click',e=>{const open=e.currentTarget.getAttribute('aria-expanded')!=='true';e.currentTarget.setAttribute('aria-expanded',String(open));$('#navigation').classList.toggle('open',open);});
+document.querySelectorAll('[data-companion]').forEach(a=>{if(location.hostname==='127.0.0.1'||location.hostname==='localhost')a.href='http://127.0.0.1:8766/index.html';});
+render();sync();
