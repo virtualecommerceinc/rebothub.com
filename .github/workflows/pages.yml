@@ -3,7 +3,6 @@ name: Build and deploy RebotHub
 on:
   push:
     branches: [main]
-    paths: ['content/**', 'src/**', 'build.js', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:
