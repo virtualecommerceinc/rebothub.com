@@ -25,15 +25,18 @@ node build.js
 python -m http.server 8790 --bind 127.0.0.1 --directory docs
 ```
 
-Open http://127.0.0.1:8790/ . Live site: https://virtualecommerceinc.github.io/rebothub.com/ (until the custom domain is set). `node build.js --check` validates internal links and content rules (no value shown
+Open http://127.0.0.1:8790/ . Live site: https://virtualecommerceinc.com/rebothub.com/ (until the custom domain is set). `node build.js --check` validates internal links and content rules (no value shown
 with fewer than 3 observations, every guide has a provenance tag, risky guides have a safety block).
 
 ## Deploy
 
 Either host serves `docs/` as-is:
 
-- GitHub Pages: Settings → Pages → Source "GitHub Actions"; the workflow in `.github/workflows/pages.yml` builds on
-  every push that touches `content/`, `src/` or `build.js`. Add a `CNAME` by setting the custom domain in Settings.
+- GitHub Pages (current): Source is "GitHub Actions"; `.github/workflows/pages.yml` builds on every push to main and
+  passes `BASE_URL` so the site works under the `/rebothub.com/` subpath. When rebothub.com is set as the custom
+  domain in Settings → Pages, remove the `BASE_URL` env line so links go back to root.
+- Remote uses the SSH alias `github-vei` (key `~/.ssh/virtualecommerceinc_account`); plain HTTPS on this PC
+  authenticates as a different account and is refused.
 - Cloudflare Pages (recommended, see `planning/final-plan.md`): build command `node build.js`, output directory `docs`.
 
 ## Before the first public deploy
